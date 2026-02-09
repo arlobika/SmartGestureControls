@@ -20,9 +20,9 @@ events:
     names:
       - "uname"
     candidate_directories:
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -37,19 +37,20 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     searched_directories:
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/uname"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/uname"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/uname"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/uname"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/uname"
       - "/usr/local/bin/uname"
       - "/System/Cryptexes/App/usr/bin/uname"
     found: "/usr/bin/uname"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -64,10 +65,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "message-v1"
     backtrace:
@@ -78,11 +80,11 @@ events:
   -
     kind: "find-v1"
     backtrace:
-      - "/opt/homebrew/share/cmake/Modules/CMakeNinjaFindMake.cmake:5 (find_program)"
+      - "/opt/homebrew/share/cmake/Modules/CMakeUnixFindMake.cmake:5 (find_program)"
       - "CMakeLists.txt:2 (project)"
     mode: "program"
     variable: "CMAKE_MAKE_PROGRAM"
-    description: "Program used to build from build.ninja files."
+    description: "Path to a program."
     settings:
       SearchFramework: "FIRST"
       SearchAppBundle: "FIRST"
@@ -92,13 +94,13 @@ events:
       CMAKE_FIND_USE_CMAKE_SYSTEM_PATH: true
       CMAKE_FIND_USE_INSTALL_PREFIX: true
     names:
-      - "ninja-build"
-      - "ninja"
-      - "samu"
+      - "gmake"
+      - "make"
+      - "smake"
     candidate_directories:
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -113,62 +115,38 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     searched_directories:
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/ninja-build"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/ninja"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/samu"
-      - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/ninja-build"
-      - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/ninja"
-      - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/samu"
-      - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/ninja-build"
-      - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/ninja"
-      - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/samu"
-      - "/Library/Frameworks/Python.framework/Versions/3.11/bin/ninja-build"
-      - "/Library/Frameworks/Python.framework/Versions/3.11/bin/ninja"
-      - "/Library/Frameworks/Python.framework/Versions/3.11/bin/samu"
-      - "/usr/local/bin/ninja-build"
-      - "/usr/local/bin/ninja"
-      - "/usr/local/bin/samu"
-      - "/System/Cryptexes/App/usr/bin/ninja-build"
-      - "/System/Cryptexes/App/usr/bin/ninja"
-      - "/System/Cryptexes/App/usr/bin/samu"
-      - "/usr/bin/ninja-build"
-      - "/usr/bin/ninja"
-      - "/usr/bin/samu"
-      - "/bin/ninja-build"
-      - "/bin/ninja"
-      - "/bin/samu"
-      - "/usr/sbin/ninja-build"
-      - "/usr/sbin/ninja"
-      - "/usr/sbin/samu"
-      - "/sbin/ninja-build"
-      - "/sbin/ninja"
-      - "/sbin/samu"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/ninja-build"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/ninja"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/samu"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/ninja-build"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/ninja"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/samu"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/ninja-build"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/ninja"
-      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/samu"
-      - "/Library/Apple/usr/bin/ninja-build"
-      - "/Library/Apple/usr/bin/ninja"
-      - "/Library/Apple/usr/bin/samu"
-      - "/usr/local/share/dotnet/ninja-build"
-      - "/usr/local/share/dotnet/ninja"
-      - "/usr/local/share/dotnet/samu"
-      - "/Users/selo/.dotnet/tools/ninja-build"
-      - "/Users/selo/.dotnet/tools/ninja"
-      - "/Users/selo/.dotnet/tools/samu"
-      - "/opt/homebrew/bin/ninja-build"
-    found: "/opt/homebrew/bin/ninja"
+      - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/gmake"
+      - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/gmake"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/gmake"
+      - "/Library/Frameworks/Python.framework/Versions/3.11/bin/gmake"
+      - "/usr/local/bin/gmake"
+      - "/System/Cryptexes/App/usr/bin/gmake"
+      - "/usr/bin/gmake"
+      - "/bin/gmake"
+      - "/usr/sbin/gmake"
+      - "/sbin/gmake"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin/gmake"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin/gmake"
+      - "/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin/gmake"
+      - "/Library/Apple/usr/bin/gmake"
+      - "/usr/local/share/dotnet/gmake"
+      - "/Users/selo/.dotnet/tools/gmake"
+      - "/opt/homebrew/bin/gmake"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/gmake"
+      - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/make"
+      - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/make"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/make"
+      - "/Library/Frameworks/Python.framework/Versions/3.11/bin/make"
+      - "/usr/local/bin/make"
+      - "/System/Cryptexes/App/usr/bin/make"
+    found: "/usr/bin/make"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -183,10 +161,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -213,9 +192,9 @@ events:
       - "icx"
       - "clang++"
     candidate_directories:
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -230,19 +209,20 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     searched_directories:
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/c++"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/c++"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/c++"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/c++"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/c++"
       - "/usr/local/bin/c++"
       - "/System/Cryptexes/App/usr/bin/c++"
     found: "/usr/bin/c++"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -257,10 +237,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -288,9 +269,9 @@ events:
     found: "/opt/homebrew/share/cmake/Modules/CMakeCXXCompilerId.cpp.in"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -305,10 +286,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "message-v1"
     backtrace:
@@ -393,9 +375,9 @@ events:
       - "ar"
     candidate_directories:
       - "/usr/bin/"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -409,12 +391,13 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     found: "/usr/bin/ar"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -429,10 +412,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -454,9 +438,9 @@ events:
       - "ranlib"
     candidate_directories:
       - "/usr/bin/"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -470,12 +454,13 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     found: "/usr/bin/ranlib"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -490,10 +475,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -515,9 +501,9 @@ events:
       - "strip"
     candidate_directories:
       - "/usr/bin/"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -531,12 +517,13 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     found: "/usr/bin/strip"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -551,10 +538,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -576,9 +564,9 @@ events:
       - "ld"
     candidate_directories:
       - "/usr/bin/"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -592,12 +580,13 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     found: "/usr/bin/ld"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -612,10 +601,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -637,9 +627,9 @@ events:
       - "nm"
     candidate_directories:
       - "/usr/bin/"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -653,12 +643,13 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     found: "/usr/bin/nm"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -673,10 +664,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -698,9 +690,9 @@ events:
       - "objdump"
     candidate_directories:
       - "/usr/bin/"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -714,12 +706,13 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     found: "/usr/bin/objdump"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -734,10 +727,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -759,9 +753,9 @@ events:
       - "objcopy"
     candidate_directories:
       - "/usr/bin/"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -775,11 +769,12 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     searched_directories:
       - "/usr/bin/objcopy"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/objcopy"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/objcopy"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/objcopy"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/objcopy"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/objcopy"
       - "/usr/local/bin/objcopy"
       - "/System/Cryptexes/App/usr/bin/objcopy"
@@ -793,12 +788,13 @@ events:
       - "/usr/local/share/dotnet/objcopy"
       - "/Users/selo/.dotnet/tools/objcopy"
       - "/opt/homebrew/bin/objcopy"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/objcopy"
     found: false
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -813,10 +809,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -838,9 +835,9 @@ events:
       - "readelf"
     candidate_directories:
       - "/usr/bin/"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -854,11 +851,12 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     searched_directories:
       - "/usr/bin/readelf"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/readelf"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/readelf"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/readelf"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/readelf"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/readelf"
       - "/usr/local/bin/readelf"
       - "/System/Cryptexes/App/usr/bin/readelf"
@@ -872,12 +870,13 @@ events:
       - "/usr/local/share/dotnet/readelf"
       - "/Users/selo/.dotnet/tools/readelf"
       - "/opt/homebrew/bin/readelf"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/readelf"
     found: false
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -892,10 +891,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -917,9 +917,9 @@ events:
       - "dlltool"
     candidate_directories:
       - "/usr/bin/"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -933,11 +933,12 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     searched_directories:
       - "/usr/bin/dlltool"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/dlltool"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/dlltool"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/dlltool"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/dlltool"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/dlltool"
       - "/usr/local/bin/dlltool"
       - "/System/Cryptexes/App/usr/bin/dlltool"
@@ -951,12 +952,13 @@ events:
       - "/usr/local/share/dotnet/dlltool"
       - "/Users/selo/.dotnet/tools/dlltool"
       - "/opt/homebrew/bin/dlltool"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/dlltool"
     found: false
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -971,10 +973,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -996,9 +999,9 @@ events:
       - "addr2line"
     candidate_directories:
       - "/usr/bin/"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -1012,11 +1015,12 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     searched_directories:
       - "/usr/bin/addr2line"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/addr2line"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/addr2line"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/addr2line"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/addr2line"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/addr2line"
       - "/usr/local/bin/addr2line"
       - "/System/Cryptexes/App/usr/bin/addr2line"
@@ -1030,12 +1034,13 @@ events:
       - "/usr/local/share/dotnet/addr2line"
       - "/Users/selo/.dotnet/tools/addr2line"
       - "/opt/homebrew/bin/addr2line"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/addr2line"
     found: false
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -1050,10 +1055,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -1075,9 +1081,9 @@ events:
       - "tapi"
     candidate_directories:
       - "/usr/bin/"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -1091,11 +1097,12 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     searched_directories:
       - "/usr/bin/tapi"
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/tapi"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/tapi"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/tapi"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/tapi"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/tapi"
       - "/usr/local/bin/tapi"
       - "/System/Cryptexes/App/usr/bin/tapi"
@@ -1109,12 +1116,13 @@ events:
       - "/usr/local/share/dotnet/tapi"
       - "/Users/selo/.dotnet/tools/tapi"
       - "/opt/homebrew/bin/tapi"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/tapi"
     found: false
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -1129,10 +1137,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
   -
     kind: "find-v1"
     backtrace:
@@ -1153,9 +1162,9 @@ events:
     names:
       - "install_name_tool"
     candidate_directories:
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/"
       - "/usr/local/bin/"
       - "/System/Cryptexes/App/usr/bin/"
@@ -1170,19 +1179,20 @@ events:
       - "/usr/local/share/dotnet/"
       - "/Users/selo/.dotnet/tools/"
       - "/opt/homebrew/bin/"
+      - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts/"
     searched_directories:
-      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/install_name_tool"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/install_name_tool"
       - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/install_name_tool"
+      - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin/install_name_tool"
       - "/Library/Frameworks/Python.framework/Versions/3.11/bin/install_name_tool"
       - "/usr/local/bin/install_name_tool"
       - "/System/Cryptexes/App/usr/bin/install_name_tool"
     found: "/usr/bin/install_name_tool"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -1197,10 +1207,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
       CMAKE_INSTALL_PREFIX: "/usr/local"
   -
     kind: "try_compile-v1"
@@ -1211,8 +1222,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-Sfkmfm"
-      binary: "/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-Sfkmfm"
+      source: "/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-wDGco9"
+      binary: "/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-wDGco9"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -1225,17 +1236,19 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-Sfkmfm'
+        Change Dir: '/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-wDGco9'
         
-        Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_9f23b
-        [1/2] /usr/bin/c++   -arch arm64   -v -Wl,-v -MD -MT CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_f9e58/fast
+        /Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_f9e58.dir/build.make CMakeFiles/cmTC_f9e58.dir/build
+        Building CXX object CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -arch arm64   -v -Wl,-v -MD -MT CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         Apple clang version 17.0.0 (clang-1700.3.19.1)
         Target: arm64-apple-darwin24.6.0
         Thread model: posix
         InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
         clang++: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
         ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"
-         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-Sfkmfm -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-Sfkmfm -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-wDGco9 -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-wDGco9 -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         clang -cc1 version 17.0.0 (clang-1700.3.19.1) default target arm64-apple-darwin24.6.0
         ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include"
         ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks"
@@ -1249,12 +1262,13 @@ events:
          /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)
          /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)
         End of search list.
-        [2/2] : && /usr/bin/c++ -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_9f23b   && :
+        Linking CXX executable cmTC_f9e58
+        /opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f9e58.dir/link.txt --verbose=1
         Apple clang version 17.0.0 (clang-1700.3.19.1)
         Target: arm64-apple-darwin24.6.0
         Thread model: posix
         InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 26.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_9f23b -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
+         "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 26.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_f9e58 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a
         @(#)PROGRAM:ld PROJECT:ld-1221.4
         BUILD 16:29:08 Aug 11 2025
         configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em armv8m.main armv8.1m.main
@@ -1267,6 +1281,7 @@ events:
         	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/lib/swift
         Framework search paths:
         	/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks
+        /usr/bin/c++  -arch arm64 -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_f9e58
         
       exitCode: 0
   -
@@ -1312,17 +1327,19 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-Sfkmfm']
+        ignore line: [Change Dir: '/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-wDGco9']
         ignore line: []
-        ignore line: [Run Build Command(s): /opt/homebrew/bin/ninja -v cmTC_9f23b]
-        ignore line: [[1/2] /usr/bin/c++   -arch arm64   -v -Wl -v -MD -MT CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /opt/homebrew/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_f9e58/fast]
+        ignore line: [/Applications/Xcode.app/Contents/Developer/usr/bin/make  -f CMakeFiles/cmTC_f9e58.dir/build.make CMakeFiles/cmTC_f9e58.dir/build]
+        ignore line: [Building CXX object CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -arch arm64   -v -Wl -v -MD -MT CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o -c /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Apple clang version 17.0.0 (clang-1700.3.19.1)]
         ignore line: [Target: arm64-apple-darwin24.6.0]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
         ignore line: [clang++: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
         ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1"]
-        ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-Sfkmfm -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-Sfkmfm -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple arm64-apple-macosx15.0.0 -Wundef-prefix=TARGET_OS_ -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mframe-pointer=non-leaf -fno-strict-return -ffp-contract=on -fno-rounding-math -funwind-tables=1 -fobjc-msgsend-selector-stubs -target-sdk-version=26.0 -fvisibility-inlines-hidden-static-local-var -fdefine-target-os-macros -fno-assume-unique-vtables -fno-modulemap-allow-subdirectory-search -target-cpu apple-m1 -target-feature +zcm -target-feature +zcz -target-feature +v8.5a -target-feature +aes -target-feature +altnzcv -target-feature +ccdp -target-feature +complxnum -target-feature +crc -target-feature +dotprod -target-feature +fp-armv8 -target-feature +fp16fml -target-feature +fptoint -target-feature +fullfp16 -target-feature +jsconv -target-feature +lse -target-feature +neon -target-feature +pauth -target-feature +perfmon -target-feature +predres -target-feature +ras -target-feature +rcpc -target-feature +rdm -target-feature +sb -target-feature +sha2 -target-feature +sha3 -target-feature +specrestrict -target-feature +ssbs -target-abi darwinpcs -debugger-tuning=lldb -fdebug-compilation-dir=/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-wDGco9 -target-linker-version 1221.4 -v -fcoverage-compilation-dir=/Users/selo/group31/build/CMakeFiles/CMakeScratch/TryCompile-wDGco9 -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17 -dependency-file CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o.d -skip-unused-modulemap-deps -MT CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o -sys-header-deps -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -I/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/c++/v1 -internal-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include -internal-externc-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks -internal-iframework /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -Wno-elaborated-enum-base -fdeprecated-macro -ferror-limit 19 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fno-cxx-modules -fskip-odr-check-in-gmf -fcxx-exceptions -fexceptions -fmax-type-align=16 -fcommon -clang-vendor-feature=+disableNonDependentMemberExprInCurrentInstantiation -fno-odr-hash-protocols -clang-vendor-feature=+enableAggressiveVLAFolding -clang-vendor-feature=+revert09abecef7bbf -clang-vendor-feature=+thisNoAlignAttr -clang-vendor-feature=+thisNoNullAttr -clang-vendor-feature=+disableAtImportPrivateFrameworkInImplementationError -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o -x c++ /opt/homebrew/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [clang -cc1 version 17.0.0 (clang-1700.3.19.1) default target arm64-apple-darwin24.6.0]
         ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/local/include"]
         ignore line: [ignoring nonexistent directory "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/Library/Frameworks"]
@@ -1336,12 +1353,13 @@ events:
         ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks (framework directory)]
         ignore line: [ /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/SubFrameworks (framework directory)]
         ignore line: [End of search list.]
-        ignore line: [[2/2] : && /usr/bin/c++ -arch arm64 -Wl -search_paths_first -Wl -headerpad_max_install_names  -v -Wl -v CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_9f23b   && :]
+        ignore line: [Linking CXX executable cmTC_f9e58]
+        ignore line: [/opt/homebrew/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f9e58.dir/link.txt --verbose=1]
         ignore line: [Apple clang version 17.0.0 (clang-1700.3.19.1)]
         ignore line: [Target: arm64-apple-darwin24.6.0]
         ignore line: [Thread model: posix]
         ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-        link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 26.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_9f23b -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
+        link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch arm64 -platform_version macos 15.0.0 26.0 -syslibroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk -mllvm -enable-linkonceodr-outlining -o cmTC_f9e58 -L/usr/local/lib -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
           arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
           arg [-demangle] ==> ignore
           arg [-lto_library] ==> ignore, skip following value
@@ -1358,12 +1376,12 @@ events:
           arg [-mllvm] ==> ignore
           arg [-enable-linkonceodr-outlining] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_9f23b] ==> ignore
+          arg [cmTC_f9e58] ==> ignore
           arg [-L/usr/local/lib] ==> dir [/usr/local/lib]
           arg [-search_paths_first] ==> ignore
           arg [-headerpad_max_install_names] ==> ignore
           arg [-v] ==> ignore
-          arg [CMakeFiles/cmTC_9f23b.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_f9e58.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lc++] ==> lib [c++]
           arg [-lSystem] ==> lib [System]
           arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/17/lib/darwin/libclang_rt.osx.a]
@@ -1442,14 +1460,6 @@ events:
         mode: "config"
         reason: "no_exist"
       -
-        path: "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/OpenCVConfig.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
-        path: "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/opencv-config.cmake"
-        mode: "config"
-        reason: "no_exist"
-      -
         path: "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand/OpenCVConfig.cmake"
         mode: "config"
         reason: "no_exist"
@@ -1463,6 +1473,14 @@ events:
         reason: "no_exist"
       -
         path: "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli/opencv-config.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/OpenCVConfig.cmake"
+        mode: "config"
+        reason: "no_exist"
+      -
+        path: "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/opencv-config.cmake"
         mode: "config"
         reason: "no_exist"
       -
@@ -1535,9 +1553,9 @@ events:
       version: "4.13.0"
     search_context:
       ENV{PATH}:
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
         - "/usr/local/bin"
         - "/System/Cryptexes/App/usr/bin"
@@ -1552,10 +1570,11 @@ events:
         - "/usr/local/share/dotnet"
         - "~/.dotnet/tools"
         - "/opt/homebrew/bin"
+        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/debugCommand"
         - "/Users/selo/Library/Application Support/Code/User/globalStorage/github.copilot-chat/copilotCli"
-        - "/Users/selo/.vscode/extensions/vadimcn.vscode-lldb-1.12.0/bin"
         - "/Library/Frameworks/Python.framework/Versions/3.11/bin"
+        - "/Users/selo/.vscode/extensions/ms-python.debugpy-2025.18.0-darwin-arm64/bundled/scripts/noConfigScripts"
       CMAKE_INSTALL_PREFIX: "/usr/local"
       CMAKE_SYSTEM_PREFIX_PATH:
         - "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr"
