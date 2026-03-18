@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/selo/group31/include -isystem /opt/homebrew/Cellar/opencv/4.13.0_3/include/opencv4
+CXX_INCLUDES = -I/Users/sneh/Developer/group31/include -isystem /opt/homebrew/Cellar/opencv/4.13.0_6/include/opencv4
 
 CXX_FLAGSarm64 = -std=gnu++17 -arch arm64
 

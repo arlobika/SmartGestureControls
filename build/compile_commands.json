@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/Users/sneh/Developer/group31/build",
+  "command": "/usr/bin/c++  -I/Users/sneh/Developer/group31/include -isystem /opt/homebrew/Cellar/opencv/4.13.0_6/include/opencv4 -std=gnu++17 -arch arm64 -o CMakeFiles/app.dir/src/main.cpp.o -c /Users/sneh/Developer/group31/src/main.cpp",
+  "file": "/Users/sneh/Developer/group31/src/main.cpp",
+  "output": "CMakeFiles/app.dir/src/main.cpp.o"
+},
+{
+  "directory": "/Users/sneh/Developer/group31/build",
+  "command": "/usr/bin/c++  -I/Users/sneh/Developer/group31/include -isystem /opt/homebrew/Cellar/opencv/4.13.0_6/include/opencv4 -std=gnu++17 -arch arm64 -o CMakeFiles/app.dir/src/HandTracker.cpp.o -c /Users/sneh/Developer/group31/src/HandTracker.cpp",
+  "file": "/Users/sneh/Developer/group31/src/HandTracker.cpp",
+  "output": "CMakeFiles/app.dir/src/HandTracker.cpp.o"
+},
+{
+  "directory": "/Users/sneh/Developer/group31/build",
+  "command": "/usr/bin/c++  -I/Users/sneh/Developer/group31/include -isystem /opt/homebrew/Cellar/opencv/4.13.0_6/include/opencv4 -std=gnu++17 -arch arm64 -o CMakeFiles/app.dir/src/GestureClassifier.cpp.o -c /Users/sneh/Developer/group31/src/GestureClassifier.cpp",
+  "file": "/Users/sneh/Developer/group31/src/GestureClassifier.cpp",
+  "output": "CMakeFiles/app.dir/src/GestureClassifier.cpp.o"
+},
+{
+  "directory": "/Users/sneh/Developer/group31/build",
+  "command": "/usr/bin/c++  -I/Users/sneh/Developer/group31/include -isystem /opt/homebrew/Cellar/opencv/4.13.0_6/include/opencv4 -std=gnu++17 -arch arm64 -o CMakeFiles/app.dir/src/ActionMapper.cpp.o -c /Users/sneh/Developer/group31/src/ActionMapper.cpp",
+  "file": "/Users/sneh/Developer/group31/src/ActionMapper.cpp",
+  "output": "CMakeFiles/app.dir/src/ActionMapper.cpp.o"
+}
+]

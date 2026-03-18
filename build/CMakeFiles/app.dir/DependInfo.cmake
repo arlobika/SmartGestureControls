@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/selo/group31/src/ActionMapper.cpp" "CMakeFiles/app.dir/src/ActionMapper.cpp.o" "gcc" "CMakeFiles/app.dir/src/ActionMapper.cpp.o.d"
-  "/Users/selo/group31/src/GestureClassifier.cpp" "CMakeFiles/app.dir/src/GestureClassifier.cpp.o" "gcc" "CMakeFiles/app.dir/src/GestureClassifier.cpp.o.d"
-  "/Users/selo/group31/src/HandTracker.cpp" "CMakeFiles/app.dir/src/HandTracker.cpp.o" "gcc" "CMakeFiles/app.dir/src/HandTracker.cpp.o.d"
-  "/Users/selo/group31/src/main.cpp" "CMakeFiles/app.dir/src/main.cpp.o" "gcc" "CMakeFiles/app.dir/src/main.cpp.o.d"
+  "/Users/sneh/Developer/group31/src/ActionMapper.cpp" "CMakeFiles/app.dir/src/ActionMapper.cpp.o" "gcc" "CMakeFiles/app.dir/src/ActionMapper.cpp.o.d"
+  "/Users/sneh/Developer/group31/src/GestureClassifier.cpp" "CMakeFiles/app.dir/src/GestureClassifier.cpp.o" "gcc" "CMakeFiles/app.dir/src/GestureClassifier.cpp.o.d"
+  "/Users/sneh/Developer/group31/src/HandTracker.cpp" "CMakeFiles/app.dir/src/HandTracker.cpp.o" "gcc" "CMakeFiles/app.dir/src/HandTracker.cpp.o.d"
+  "/Users/sneh/Developer/group31/src/main.cpp" "CMakeFiles/app.dir/src/main.cpp.o" "gcc" "CMakeFiles/app.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
