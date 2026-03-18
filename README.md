@@ -6,7 +6,7 @@ Real-time hand tracking using **MediaPipe** and **OpenCV** with a hybrid C++/Pyt
 
 ```bash
 # Build and run
-cd /Users/selo/group31
+# Navigate to the project root directory
 mkdir -p build && cd build
 cmake .. && make
 cd ..
@@ -224,3 +224,8 @@ Smart Gesture Controls Team - Group 31
 ---
 
 **Need help?** Check [DOCUMENTATION.md](DOCUMENTATION.md) for comprehensive guides and implementation details.
+
+
+Running:
+    - mkdir -p build && cd build && cmake .. && make && cd ..
+    - ./build/app

@@ -12,8 +12,54 @@
 #define sleep_ms(ms) Sleep(ms)
 #else
 #include <unistd.h>
-#define sleep_ms(ms) usleep((ms) * 1000)
+#define sleep_ms(ms) usleep((ms)*1000)
 #endif
+
+#ifdef __APPLE__
+#include <mach-o/dyld.h> // _NSGetExecutablePath
+#endif
+
+/**
+ * Get the project root directory at runtime.
+ * The executable lives in build/, so project root is one level up.
+ * Works on macOS, Linux, and Windows without any hardcoded paths.
+ */
+static std::string getProjectRoot() {
+  std::string exePath;
+
+#ifdef _WIN32
+  char buf[MAX_PATH];
+  GetModuleFileNameA(NULL, buf, MAX_PATH);
+  exePath = std::string(buf);
+  // Find last backslash to get directory
+  size_t lastSlash = exePath.find_last_of("\\");
+#elif __APPLE__
+  char buf[1024];
+  uint32_t size = sizeof(buf);
+  _NSGetExecutablePath(buf, &size);
+  exePath = std::string(buf);
+  size_t lastSlash = exePath.find_last_of("/");
+#else
+  // Linux: read /proc/self/exe
+  char buf[1024];
+  ssize_t len = readlink("/proc/self/exe", buf, sizeof(buf) - 1);
+  if (len != -1)
+    buf[len] = '\0';
+  exePath = std::string(buf);
+  size_t lastSlash = exePath.find_last_of("/");
+#endif
+
+  // Get the directory containing the executable (e.g., .../group31/build)
+  std::string exeDir =
+      (lastSlash != std::string::npos) ? exePath.substr(0, lastSlash) : ".";
+
+  // Go one level up from build/ to get project root
+#ifdef _WIN32
+  return exeDir + "\\..";
+#else
+  return exeDir + "/..";
+#endif
+}
 
 // Simple base64 encoding
 static const char base64_chars[] =
@@ -79,16 +125,18 @@ HandTracker::HandTracker() : initialized_(false), python_process_(nullptr) {
 HandTracker::~HandTracker() { stopPythonProcess(); }
 
 bool HandTracker::startPythonProcess() {
-  // Use the virtual environment Python interpreter
-  // REMEMBER TO CHANGE TO YOUR FILE PATH
+  // Resolve paths relative to the project root (one level above build/)
+  std::string root = getProjectRoot();
+
 #ifdef _WIN32
-  std::string python_path = ".venv\\Scripts\\python.exe";
-  std::string cmd = python_path + " hand_detector.py 2>&1";
+  std::string python_path = root + "\\.venv\\Scripts\\python.exe";
+  std::string script_path = root + "\\hand_detector.py";
 #else
-  std::string python_path = "/Users/sneh/Developer/group31/.venv/bin/python3";
-  std::string cmd =
-      python_path + " /Users/sneh/Developer/group31/hand_detector.py 2>&1";
+  std::string python_path = root + "/.venv/bin/python3";
+  std::string script_path = root + "/hand_detector.py";
 #endif
+
+  std::string cmd = python_path + " " + script_path + " 2>&1";
 
   // Start Python process
   python_process_ = popen(cmd.c_str(), "r+");
