@@ -1,5 +1,7 @@
 /**
- * ActionMapper.cpp
+ * @file ActionMapper.cpp
+ * @brief Implements the ActionMapper class for converting
+ * gestures into simulated keyboard input.
  *
  * Maps gestures to simulated keypresses for YouTube control.
  * Cross-platform: uses CGEvent on macOS, SendInput on Windows.
@@ -10,6 +12,7 @@
  *   THUMBS_UP  → Up Arrow   → Volume Up
  *   THUMBS_DOWN→ Down Arrow → Volume Down
  *   PEACE      → L          → Skip Forward 10s
+ * @authors Hasit Dhanoa
  */
 
 #include "ActionMapper.hpp"
@@ -21,13 +24,33 @@
 #elif _WIN32
 #include <Windows.h>
 #endif
-
+/*
+* @brief Constructs an ActionMapper object with a specified cooldown period.
+* This constructor initializes the cooldown duration between gesture-triggered
+* actions, sets the last recognized gesture to `GestureType::NONE`, and sets
+* the last action time far enough in the past to allow the first gesture to
+* trigger an action immediately.
+* @param cooldownSeconds The minimum number of seconds that must pass before
+* another gesture can trigger a new action.
+* @authors Hasit
+*/
 ActionMapper::ActionMapper(double cooldownSeconds)
     : cooldownSeconds_(cooldownSeconds), lastGesture_(GestureType::NONE),
       lastActionTime_(std::chrono::steady_clock::now() -
                       std::chrono::seconds(10)) // Allow immediate first action
 {}
-
+/*
+ * @brief Simulates a keyboard press for the specified key code.
+ * This function sends both a key press and key release event to the operating
+ * system so that the target application receives the input as a normal keyboard
+ * action.
+ * Platform behavior:
+ * - On macOS, the function uses `CGEventCreateKeyboardEvent` and `CGEventPost`.
+ * - On Windows, the function uses the `SendInput` API with separate key-down
+ *   and key-up events.
+ * @param keyCode (The platform specific key code to simulate
+ * @authors Hasit Dhanoa
+*/
 void ActionMapper::simulateKeypress(int keyCode) {
 #ifdef __APPLE__
   // macOS: Use Core Graphics events
@@ -62,7 +85,17 @@ void ActionMapper::simulateKeypress(int keyCode) {
   SendInput(2, inputs, sizeof(INPUT));
 #endif
 }
-
+/**
+ * @brief Returns the remaining cooldown time before another action may occur.
+ * This function computes the time elapsed since the last triggered action and
+ * subtracts it from the configured cooldown duration. If the cooldown has
+ * already expired, the function returns `0.0`.
+ *
+ * @return The number of seconds remaining in the cooldown period. Returns
+ * `0.0` if the cooldown has expired.
+ *
+ * @author
+*/
 double ActionMapper::getCooldownRemaining() const {
   auto now = std::chrono::steady_clock::now();
   double elapsed =
@@ -71,7 +104,31 @@ double ActionMapper::getCooldownRemaining() const {
   return remaining > 0 ? remaining : 0.0;
 }
 
-std::string ActionMapper::handleGesture(GestureType gesture) {
+/**
+ * @brief Processes a recognized gesture and triggers the corresponding action.
+ * This function checks whether the detected gesture is valid and whether the
+ * cooldown period has expired. If the gesture is recognized and the cooldown
+ * allows it, the function maps the gesture to a platform-specific keyboard
+ * event and simulates the associated keypress.
+ * Gesture mapping:
+ * - `OPEN_HAND` triggers Space for play/pause
+ * - `FIST` triggers M for mute/unmute
+ * - `THUMBS_UP` triggers Up Arrow for volume increase
+ * - `THUMBS_DOWN` triggers Down Arrow for volume decrease
+ * - `PEACE` triggers L for skipping forward
+ *
+ * After successfully triggering an action, the function updates the cooldown
+ * state and stores the most recently processed gesture.
+ *
+ * @param gesture The recognized gesture to process.
+ * @return A string describing the action performed. Returns an empty string
+ * if no action was taken because the gesture was `NONE`, unrecognized, or
+ * still within the cooldown period.
+ *
+ * @author Hasit Dhanoa
+ */
+
+  std::string ActionMapper::handleGesture(GestureType gesture) {
   // Ignore NONE gestures
   if (gesture == GestureType::NONE) {
     return "";
