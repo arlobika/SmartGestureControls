@@ -13,7 +13,7 @@
  * 3. Python returns JSON with hand landmarks
  * 4. Main loop draws landmarks and skeleton on frame
  * 5. OpenCV displays the result
- * @author
+ * @author Jaime, Hasit, Arlo
  */
 
 #include "ActionMapper.hpp"
@@ -24,6 +24,28 @@
 #include <opencv2/opencv.hpp>
 
 
+/**
+ * @brief Runs the Smart Gesture Controls application.
+ * This function initializes the webcam and hand-tracking pipeline, then enters
+ * a continuous processing loop that captures video frames, detects hands,
+ * classifies gestures, maps gestures to actions, and displays the annotated
+ * video feed.
+ *
+ * Main processing stages:
+ * - Open webcam input using the appropriate OpenCV backend
+ * - Initialize the HandTracker for MediaPipe-based hand detection
+ * - Create a GestureClassifier and ActionMapper for gesture interpretation
+ * - Capture and process frames in real time
+ * - Draw hand skeletons, landmarks, gesture labels, FPS, and action status
+ * - Exit when the user presses the ESC key
+ *
+ * The function returns a non-zero value if webcam initialization or
+ * HandTracker setup fails.
+ * @return Returns 0 if the program completes successfully, or 1 if an
+ * initialization error occurs.
+ *
+ * @author Jaime, Hasit, Arlo
+*/
 
 int main() {
     //  check OS

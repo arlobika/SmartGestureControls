@@ -1,4 +1,24 @@
-﻿#include "HandTracker.hpp"
+﻿/**
+ * @file HandTracker.cpp
+ * @brief Implements the HandTracker class for communicating with a MediaPipe Python subprocess.
+ * This file provides the implementation of the HandTracker class, which is
+ * responsible for sending image frames from C++ to a Python script running
+ * MediaPipe hand detection and receiving JSON responses containing hand
+ * landmark data.
+ *
+ * Key responsibilities:
+ * - Launch Python subprocess dynamically based on OS
+ * - Encode frames (JPEG → Base64) for pipe communication
+ * - Send frame data to Python via stdin
+ * - Receive and parse JSON responses from stdout
+ * - Convert parsed data into Hand objects
+ * The implementation includes platform-specific handling for process creation
+ * and executable path resolution across Windows, macOS, and Linux.
+ *
+ * @authors Hasit, Jaime
+ */
+
+#include "HandTracker.hpp"
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
@@ -21,20 +41,22 @@
 #  include <mach-o/dyld.h>  // _NSGetExecutablePath
 #endif
 
-// ── getProjectRoot ────────────────────────────────────────────────────────────
-// Returns the project root directory at runtime.
-// Assumes the executable lives in <root>/build/, so the root is one level up.
-//
-// Fixes vs. previous version:
-//   • lastSlash is now declared BEFORE the #ifdef block with a safe default.
-//     Previously it was declared inside each branch but used after #endif,
-//     which compilers warn about as "potentially uninitialized".
-//   • All buf[] arrays are zero-initialised with = {} so garbage bytes are
-//     never read if the OS call partially fails.
-//   • Linux branch only assigns exePath when readlink() actually succeeds.
-//   • Windows now uses GetModuleFileNameW + WideCharToMultiByte instead of
-//     GetModuleFileNameA, which is undefined in some SDK/compiler combinations
-//     (e.g. when UNICODE is defined, or with certain MinGW configurations).
+/**
+ * Get the project root directory at runtime.
+ * @brief Get the project root directory at runtime.
+ * Assumes the executable lives in <root>/build/, so the root is one level up.
+ * Fixes vs. previous version:
+ *  • lastSlash is now declared BEFORE the #ifdef block with a safe default.
+ *   Previously it was declared inside each branch but used after #endif,
+ *    which compilers warn about as "potentially uninitialized".
+ *  • All buf[] arrays are zero-initialised with = {} so garbage bytes are
+ *    never read if the OS call partially fails.
+ *  • Linux branch only assigns exePath when readlink() actually succeeds.
+ *   • Windows now uses GetModuleFileNameW + WideCharToMultiByte instead of
+ *    GetModuleFileNameA, which is undefined in some SDK/compiler combinations
+ *    (e.g. when UNICODE is defined, or with certain MinGW configurations).
+ * @authors Jaime
+*/
 static std::string getProjectRoot() {
     // Step 1: resolve the directory containing this executable.
     std::string exeDir;
@@ -102,6 +124,18 @@ static std::string getProjectRoot() {
 static const char base64_chars[] =
 "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
+/**
+ * @brief Encodes binary data into Base64 format.
+ * This function converts raw binary data (such as JPEG image bytes)
+ * into a Base64-encoded string so it can be transmitted safely over
+ * text-based pipes between C++ and Python.
+ *
+ * @param buf Pointer to input byte buffer.
+ * @param buflen Length of the buffer.
+ * @return Base64-encoded string representation.
+ * @author Jaime, Hasit
+ */
+
 static std::string base64_encode(const unsigned char* buf, unsigned int buflen) {
     std::string   ret;
     int           i = 0;
@@ -137,7 +171,11 @@ static std::string base64_encode(const unsigned char* buf, unsigned int buflen) 
   return ret;
 }
 
-// ── Constructor / Destructor ──────────────────────────────────────────────────
+/**
+ * @brief Destructor that stops the Python subprocess.
+ * @author Jaime
+ */
+
 HandTracker::HandTracker()
     : initialized_(false),
     python_read_(nullptr),
@@ -156,12 +194,24 @@ HandTracker::HandTracker()
         std::cerr << "Error initializing HandTracker\n";
     }
 }
+  /* @brief Destructor that stops the Python subprocess.
+   * @author Hasit
+ */
 
 HandTracker::~HandTracker() { stopPythonProcess(); }
 
 // ── startPythonProcess ────────────────────────────────────────────────────────
 #ifdef _WIN32
 // ── Windows ───────────────────────────────────────────────────────────────────
+
+/**
+ * @brief Starts the Python MediaPipe subprocess.
+ * Builds the command dynamically using the project root directory,
+ * launches the Python script, and waits for a "READY" signal before
+ * returning success.
+ * @return true if initialization succeeds, false otherwise.
+ * @author Jaime
+ */
 bool HandTracker::startPythonProcess() {
     std::string root = getProjectRoot();
     std::string python_path = root + "\\.venv\\Scripts\\python.exe";
@@ -285,7 +335,15 @@ bool HandTracker::startPythonProcess() {
   }
 
 #else
-// ── macOS / Linux ─────────────────────────────────────────────────────────────
+
+/**
+ * @brief Starts the Python MediaPipe subprocess for Mac/Linux
+ * Builds the command dynamically using the project root directory,
+ * launches the Python script, and waits for a "READY" signal before
+ * returning success.
+ * @return true if initialization succeeds, false otherwise.
+ * @author Hasit
+ */
 bool HandTracker::startPythonProcess() {
     std::string root = getProjectRoot();
     std::string python_path = root + "/.venv/bin/python3";
@@ -356,7 +414,11 @@ bool HandTracker::startPythonProcess() {
 }
 #endif  // _WIN32
 
-// ── stopPythonProcess ─────────────────────────────────────────────────────────
+/**
+ * @brief Stops and cleans up the Python subprocess
+ * @author Hasit
+ */
+
 void HandTracker::stopPythonProcess() {
     // Close the write end first — child sees EOF on its stdin and can exit cleanly
     if (python_write_) { fclose(python_write_); python_write_ = nullptr; }
@@ -378,7 +440,16 @@ void HandTracker::stopPythonProcess() {
 #endif
 }
 
-// ── detectHands ───────────────────────────────────────────────────────────────
+/**
+ * @brief Sends a frame to Python and returns detected hands.
+ * Encodes the frame, sends it to Python, reads JSON output,
+ * and parses hand landmark data.
+ *
+ * @param frame Input OpenCV image.
+ * @return Vector of detected Hand objects.
+ * @author Hasit
+ */
+
 std::vector<Hand> HandTracker::detectHands(const cv::Mat& frame) {
     std::vector<Hand> hands;
 
@@ -505,7 +576,7 @@ std::vector<Hand> HandTracker::detectHands(const cv::Mat& frame) {
                     if (lm_bracket == 0) {
                         std::string lm_content =
                             hand_obj.substr(lm_open + 1, lm_close - lm_open - 1);
-
+                        // Parse each landmark
                         size_t lm_pos = 0;
                         while (lm_pos < lm_content.length()) {
                             while (lm_pos < lm_content.length() &&
@@ -517,7 +588,7 @@ std::vector<Hand> HandTracker::detectHands(const cv::Mat& frame) {
 
                             if (lm_pos >= lm_content.length() ||
                                 lm_content[lm_pos] != '{') break;
-
+                             // Find matching
                             int    lm_brace = 0;
                             size_t lm_start = lm_pos;
                             size_t lm_end = lm_pos;
@@ -533,7 +604,7 @@ std::vector<Hand> HandTracker::detectHands(const cv::Mat& frame) {
                             lm_pos = lm_end + 1;
 
                             int x = 0, y = 0;
-
+                            // Parse x
                             size_t x_pos = lm_obj.find("\"x\"");
                             if (x_pos != std::string::npos) {
                                 size_t colon = lm_obj.find(':', x_pos);
@@ -542,7 +613,7 @@ std::vector<Hand> HandTracker::detectHands(const cv::Mat& frame) {
                                 try { x = std::stoi(lm_obj.substr(val, end - val)); }
                                 catch (...) {}
                             }
-
+                            // Parse y
                             size_t y_pos = lm_obj.find("\"y\"");
                             if (y_pos != std::string::npos) {
                                 size_t colon = lm_obj.find(':', y_pos);
