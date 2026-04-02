@@ -14,4 +14,12 @@ add_executable(app
 )
 
 target_include_directories(app PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_link_libraries(app PRIVATE ${OpenCV_LIBS})
+
+# Platform-specific linking
+if(APPLE)
+    target_link_libraries(app PRIVATE ${OpenCV_LIBS} "-framework ApplicationServices")
+elseif(WIN32)
+    target_link_libraries(app PRIVATE ${OpenCV_LIBS})
+else()
+    target_link_libraries(app PRIVATE ${OpenCV_LIBS})
+endif()

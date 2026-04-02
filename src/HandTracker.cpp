@@ -121,6 +121,7 @@ static std::string base64_encode(const unsigned char* buf, unsigned int buflen) 
             i = 0;
         }
     }
+  }
 
     if (i > 0) {
         for (int j = i; j < 3; j++) char_array_3[j] = '\0';
@@ -133,7 +134,7 @@ static std::string base64_encode(const unsigned char* buf, unsigned int buflen) 
         while (i++ < 3) ret += '=';
     }
 
-    return ret;
+  return ret;
 }
 
 // ── Constructor / Destructor ──────────────────────────────────────────────────
@@ -281,7 +282,7 @@ bool HandTracker::startPythonProcess() {
     }
     std::cerr << "Timed out waiting for Python READY signal\n";
     return false;
-}
+  }
 
 #else
 // ── macOS / Linux ─────────────────────────────────────────────────────────────

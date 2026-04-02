@@ -1,21 +1,27 @@
 /**
- * Smart Gesture Controls - Main Application
- * 
+ * @file main.cpp
+ * @brief Main Application
+ *
  * This application captures video from a webcam, detects hands using MediaPipe
- * (via Python subprocess), and visualizes the detected hand landmarks in real-time.
- * 
+ * (via Python subprocess), and visualizes the detected hand landmarks in
+ * real-time.
+ * The application is designed for interactive gesture-based control, such as
+ * controlling YouTube playback with hand motions.
  * Architecture:
  * 1. OpenCV captures frames from webcam
  * 2. HandTracker sends frames to Python subprocess for ML inference
  * 3. Python returns JSON with hand landmarks
  * 4. Main loop draws landmarks and skeleton on frame
  * 5. OpenCV displays the result
+ * @author
  */
 
-#include <opencv2/opencv.hpp>
-#include <iostream>
-#include <chrono>
+#include "ActionMapper.hpp"
+#include "GestureClassifier.hpp"
 #include "HandTracker.hpp"
+#include <chrono>
+#include <iostream>
+#include <opencv2/opencv.hpp>
 
 
 
@@ -38,12 +44,15 @@ int main() {
     }
     std::cerr << "Camera opened succesfully\n";
 
-    // Create HandTracker instance
-    // This starts a Python subprocess that runs MediaPipe hand detection
-    HandTracker tracker;
-    if (!tracker.isInitialized()) {
-        std::cerr << "Error: Failed to initialize HandTracker\n";
-        return 1;
+    // ===== GESTURE RECOGNITION =====
+    // Classify the gesture of the first detected hand and trigger action
+    GestureType currentGesture = GestureType::NONE;
+    if (!hands.empty()) {
+      currentGesture = classifier.classify(hands[0]);
+      std::string action = mapper.handleGesture(currentGesture);
+      if (!action.empty()) {
+        lastAction = action;
+      }
     }
 
     cv::Mat frame;  // Frame buffer for captured images
@@ -176,12 +185,48 @@ int main() {
         if (key == 27) break;
     }
 
-    // Cleanup: close all OpenCV windows
-    cv::destroyAllWindows();
-    
-    // HandTracker destructor will automatically:
-    // - Close the Python subprocess pipe
-    // - Terminate the Python process
-    
-    return 0;
+    // FPS counter in top right
+    std::string fps_text = "FPS: " + std::to_string(static_cast<int>(fps));
+    cv::putText(frame, fps_text, cv::Point(frame.cols - 120, 30),
+                cv::FONT_HERSHEY_SIMPLEX, 0.7, cv::Scalar(255, 255, 0), 2);
+
+    // Exit instruction below FPS
+    cv::putText(frame, "Press ESC to exit", cv::Point(frame.cols - 200, 60),
+                cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(255, 255, 255), 1);
+
+    // ===== GESTURE DISPLAY =====
+    // Show current gesture name
+    if (currentGesture != GestureType::NONE) {
+      std::string gestureText = "Gesture: " + gestureToString(currentGesture);
+      cv::putText(frame, gestureText, cv::Point(10, frame.rows - 80),
+                  cv::FONT_HERSHEY_SIMPLEX, 0.8, cv::Scalar(0, 255, 255), 2);
+    }
+    // Show last triggered action
+    if (!lastAction.empty()) {
+      double cooldown = mapper.getCooldownRemaining();
+      std::string actionText = "Action: " + lastAction;
+      if (cooldown > 0) {
+        actionText += " (" + std::to_string((int)cooldown + 1) + "s)";
+      }
+      cv::putText(frame, actionText, cv::Point(10, frame.rows - 10),
+                  cv::FONT_HERSHEY_SIMPLEX, 0.7, cv::Scalar(255, 200, 0), 2);
+    }
+
+    // Display the frame in a window
+    cv::imshow("Smart Gesture Controls - Hand Tracking", frame);
+
+    // Wait 30ms and check for ESC key (ASCII 27)
+    // 30ms delay = ~33 FPS maximum, reduces CPU usage
+    if (cv::waitKey(30) == 27)
+      break;
+  }
+
+  // Cleanup: close all OpenCV windows
+  cv::destroyAllWindows();
+
+  // HandTracker destructor will automatically:
+  // - Close the Python subprocess pipe
+  // - Terminate the Python process
+
+  return 0;
 }

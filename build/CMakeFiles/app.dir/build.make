@@ -53,10 +53,10 @@ RM = /opt/homebrew/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/selo/group31
+CMAKE_SOURCE_DIR = /Users/sneh/Developer/group31
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/selo/group31/build
+CMAKE_BINARY_DIR = /Users/sneh/Developer/group31/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/app.dir/depend.make
@@ -73,60 +73,60 @@ CMakeFiles/app.dir/codegen:
 .PHONY : CMakeFiles/app.dir/codegen
 
 CMakeFiles/app.dir/src/main.cpp.o: CMakeFiles/app.dir/flags.make
-CMakeFiles/app.dir/src/main.cpp.o: /Users/selo/group31/src/main.cpp
+CMakeFiles/app.dir/src/main.cpp.o: /Users/sneh/Developer/group31/src/main.cpp
 CMakeFiles/app.dir/src/main.cpp.o: CMakeFiles/app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/selo/group31/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/app.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/main.cpp.o -MF CMakeFiles/app.dir/src/main.cpp.o.d -o CMakeFiles/app.dir/src/main.cpp.o -c /Users/selo/group31/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sneh/Developer/group31/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/app.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/main.cpp.o -MF CMakeFiles/app.dir/src/main.cpp.o.d -o CMakeFiles/app.dir/src/main.cpp.o -c /Users/sneh/Developer/group31/src/main.cpp
 
 CMakeFiles/app.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/selo/group31/src/main.cpp > CMakeFiles/app.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sneh/Developer/group31/src/main.cpp > CMakeFiles/app.dir/src/main.cpp.i
 
 CMakeFiles/app.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/selo/group31/src/main.cpp -o CMakeFiles/app.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sneh/Developer/group31/src/main.cpp -o CMakeFiles/app.dir/src/main.cpp.s
 
 CMakeFiles/app.dir/src/HandTracker.cpp.o: CMakeFiles/app.dir/flags.make
-CMakeFiles/app.dir/src/HandTracker.cpp.o: /Users/selo/group31/src/HandTracker.cpp
+CMakeFiles/app.dir/src/HandTracker.cpp.o: /Users/sneh/Developer/group31/src/HandTracker.cpp
 CMakeFiles/app.dir/src/HandTracker.cpp.o: CMakeFiles/app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/selo/group31/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/app.dir/src/HandTracker.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/HandTracker.cpp.o -MF CMakeFiles/app.dir/src/HandTracker.cpp.o.d -o CMakeFiles/app.dir/src/HandTracker.cpp.o -c /Users/selo/group31/src/HandTracker.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sneh/Developer/group31/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/app.dir/src/HandTracker.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/HandTracker.cpp.o -MF CMakeFiles/app.dir/src/HandTracker.cpp.o.d -o CMakeFiles/app.dir/src/HandTracker.cpp.o -c /Users/sneh/Developer/group31/src/HandTracker.cpp
 
 CMakeFiles/app.dir/src/HandTracker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/HandTracker.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/selo/group31/src/HandTracker.cpp > CMakeFiles/app.dir/src/HandTracker.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sneh/Developer/group31/src/HandTracker.cpp > CMakeFiles/app.dir/src/HandTracker.cpp.i
 
 CMakeFiles/app.dir/src/HandTracker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/HandTracker.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/selo/group31/src/HandTracker.cpp -o CMakeFiles/app.dir/src/HandTracker.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sneh/Developer/group31/src/HandTracker.cpp -o CMakeFiles/app.dir/src/HandTracker.cpp.s
 
 CMakeFiles/app.dir/src/GestureClassifier.cpp.o: CMakeFiles/app.dir/flags.make
-CMakeFiles/app.dir/src/GestureClassifier.cpp.o: /Users/selo/group31/src/GestureClassifier.cpp
+CMakeFiles/app.dir/src/GestureClassifier.cpp.o: /Users/sneh/Developer/group31/src/GestureClassifier.cpp
 CMakeFiles/app.dir/src/GestureClassifier.cpp.o: CMakeFiles/app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/selo/group31/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/app.dir/src/GestureClassifier.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/GestureClassifier.cpp.o -MF CMakeFiles/app.dir/src/GestureClassifier.cpp.o.d -o CMakeFiles/app.dir/src/GestureClassifier.cpp.o -c /Users/selo/group31/src/GestureClassifier.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sneh/Developer/group31/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/app.dir/src/GestureClassifier.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/GestureClassifier.cpp.o -MF CMakeFiles/app.dir/src/GestureClassifier.cpp.o.d -o CMakeFiles/app.dir/src/GestureClassifier.cpp.o -c /Users/sneh/Developer/group31/src/GestureClassifier.cpp
 
 CMakeFiles/app.dir/src/GestureClassifier.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/GestureClassifier.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/selo/group31/src/GestureClassifier.cpp > CMakeFiles/app.dir/src/GestureClassifier.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sneh/Developer/group31/src/GestureClassifier.cpp > CMakeFiles/app.dir/src/GestureClassifier.cpp.i
 
 CMakeFiles/app.dir/src/GestureClassifier.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/GestureClassifier.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/selo/group31/src/GestureClassifier.cpp -o CMakeFiles/app.dir/src/GestureClassifier.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sneh/Developer/group31/src/GestureClassifier.cpp -o CMakeFiles/app.dir/src/GestureClassifier.cpp.s
 
 CMakeFiles/app.dir/src/ActionMapper.cpp.o: CMakeFiles/app.dir/flags.make
-CMakeFiles/app.dir/src/ActionMapper.cpp.o: /Users/selo/group31/src/ActionMapper.cpp
+CMakeFiles/app.dir/src/ActionMapper.cpp.o: /Users/sneh/Developer/group31/src/ActionMapper.cpp
 CMakeFiles/app.dir/src/ActionMapper.cpp.o: CMakeFiles/app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/selo/group31/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/app.dir/src/ActionMapper.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/ActionMapper.cpp.o -MF CMakeFiles/app.dir/src/ActionMapper.cpp.o.d -o CMakeFiles/app.dir/src/ActionMapper.cpp.o -c /Users/selo/group31/src/ActionMapper.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/sneh/Developer/group31/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/app.dir/src/ActionMapper.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.dir/src/ActionMapper.cpp.o -MF CMakeFiles/app.dir/src/ActionMapper.cpp.o.d -o CMakeFiles/app.dir/src/ActionMapper.cpp.o -c /Users/sneh/Developer/group31/src/ActionMapper.cpp
 
 CMakeFiles/app.dir/src/ActionMapper.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/app.dir/src/ActionMapper.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/selo/group31/src/ActionMapper.cpp > CMakeFiles/app.dir/src/ActionMapper.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/sneh/Developer/group31/src/ActionMapper.cpp > CMakeFiles/app.dir/src/ActionMapper.cpp.i
 
 CMakeFiles/app.dir/src/ActionMapper.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/app.dir/src/ActionMapper.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/selo/group31/src/ActionMapper.cpp -o CMakeFiles/app.dir/src/ActionMapper.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/sneh/Developer/group31/src/ActionMapper.cpp -o CMakeFiles/app.dir/src/ActionMapper.cpp.s
 
 # Object files for target app
 app_OBJECTS = \
@@ -200,7 +200,7 @@ app: /opt/homebrew/lib/libopencv_photo.4.13.0.dylib
 app: /opt/homebrew/lib/libopencv_imgproc.4.13.0.dylib
 app: /opt/homebrew/lib/libopencv_core.4.13.0.dylib
 app: CMakeFiles/app.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/selo/group31/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable app"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/sneh/Developer/group31/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable app"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/app.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -212,6 +212,6 @@ CMakeFiles/app.dir/clean:
 .PHONY : CMakeFiles/app.dir/clean
 
 CMakeFiles/app.dir/depend:
-	cd /Users/selo/group31/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/selo/group31 /Users/selo/group31 /Users/selo/group31/build /Users/selo/group31/build /Users/selo/group31/build/CMakeFiles/app.dir/DependInfo.cmake "--color=$(COLOR)" app
+	cd /Users/sneh/Developer/group31/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/sneh/Developer/group31 /Users/sneh/Developer/group31 /Users/sneh/Developer/group31/build /Users/sneh/Developer/group31/build /Users/sneh/Developer/group31/build/CMakeFiles/app.dir/DependInfo.cmake "--color=$(COLOR)" app
 .PHONY : CMakeFiles/app.dir/depend
 
