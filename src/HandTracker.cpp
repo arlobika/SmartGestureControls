@@ -1,4 +1,4 @@
-﻿#include "HandTracker.hpp"
+#include "HandTracker.hpp"
 #include <algorithm>
 #include <cstdlib>
 #include <iostream>
@@ -121,7 +121,6 @@ static std::string base64_encode(const unsigned char* buf, unsigned int buflen) 
             i = 0;
         }
     }
-  }
 
     if (i > 0) {
         for (int j = i; j < 3; j++) char_array_3[j] = '\0';
@@ -134,7 +133,7 @@ static std::string base64_encode(const unsigned char* buf, unsigned int buflen) 
         while (i++ < 3) ret += '=';
     }
 
-  return ret;
+    return ret;
 }
 
 // ── Constructor / Destructor ──────────────────────────────────────────────────
