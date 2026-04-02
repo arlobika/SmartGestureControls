@@ -17,15 +17,26 @@
 #include <chrono>
 #include "HandTracker.hpp"
 
+
+
 int main() {
+    //  check OS
+    #ifdef _WIN32
+        std::string osName = "Windows";
+    #elif __APPLE__
+        std::string osName = "macOS";
+    #endif
     // Initialize webcam capture
     // CAP_AVFOUNDATION is required for macOS camera access
     // 0 = default camera (usually built-in webcam)
-    cv::VideoCapture cap(0, cv::CAP_AVFOUNDATION);
+    cv::VideoCapture cap;
+    if (osName == "macOS") cap.open(0, cv::CAP_AVFOUNDATION);
+    else if (osName == "Windows") cap.open(0, cv::CAP_DSHOW);
     if (!cap.isOpened()) {
         std::cerr << "Error: Could not open webcam\n";
         return 1;
     }
+    std::cerr << "Camera opened succesfully\n";
 
     // Create HandTracker instance
     // This starts a Python subprocess that runs MediaPipe hand detection
@@ -59,11 +70,18 @@ int main() {
         // Capture frame from webcam
         cap >> frame;
         if (frame.empty()) break;  // Exit if camera disconnected
+        else {
+            std::cout << "Captured frame: " << frame.cols << "x" << frame.rows << "\n";
+        }
 
         // Detect hands in current frame
         // Returns vector of Hand objects, each with 21 landmarks
+          //
         auto hands = tracker.detectHands(frame);
-        
+        //std::vector<Hand> hands;
+
+        std::cout << "Prep Visualization\n";
+
         // ===== VISUALIZATION =====
         // Draw hand landmarks and skeleton for each detected hand
         for (size_t h = 0; h < hands.size(); ++h) {
@@ -151,10 +169,11 @@ int main() {
 
         // Display the frame in a window
         cv::imshow("Smart Gesture Controls - Hand Tracking", frame);
+        int key = cv::waitKey(1); // 1 ms delay, required for window to update
         
         // Wait 30ms and check for ESC key (ASCII 27)
         // 30ms delay = ~33 FPS maximum, reduces CPU usage
-        if (cv::waitKey(30) == 27) break;
+        if (key == 27) break;
     }
 
     // Cleanup: close all OpenCV windows

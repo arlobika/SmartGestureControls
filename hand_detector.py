@@ -174,10 +174,7 @@ if __name__ == "__main__":
                 image_size = int(size_line.strip())
                 
                 # Read base64 encoded image data
-                image_b64_data = sys.stdin.read(image_size)
-                
-                # Read the trailing newline
-                sys.stdin.read(1)
+                image_b64_data = sys.stdin.readline().strip()
                 
                 # ===== DECODE IMAGE =====
                 # Decode base64 → JPEG bytes
