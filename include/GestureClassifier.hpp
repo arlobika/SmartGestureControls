@@ -1,5 +1,5 @@
 /**
- * GestureClassifier.hpp
+ * @file GestureClassifier.hpp
  * @brief Declares the GestureClassifier class and gesture-related utilities
  * Classifies hand landmarks into discrete gesture types.
  * Uses fingertip vs knuckle positions to determine which fingers are extended.

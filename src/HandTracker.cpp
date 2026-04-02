@@ -1,3 +1,22 @@
+/**
+ * @file HandTracker.cpp
+ * @brief Implements the HandTracker class for communicating with a MediaPipe Python subprocess.
+ * This file provides the implementation of the HandTracker class, which is
+ * responsible for sending image frames from C++ to a Python script running
+ * MediaPipe hand detection and receiving JSON responses containing hand
+ * landmark data.
+ *
+ * Key responsibilities:
+ * - Launch Python subprocess dynamically based on OS
+ * - Encode frames (JPEG → Base64) for pipe communication
+ * - Send frame data to Python via stdin
+ * - Receive and parse JSON responses from stdout
+ * - Convert parsed data into Hand objects
+ * The implementation includes platform-specific handling for process creation
+ * and executable path resolution across Windows, macOS, and Linux.
+ *
+ * @authors Hasit
+ */
 #include "HandTracker.hpp"
 #include <algorithm>
 #include <cstdlib>
@@ -20,9 +39,10 @@
 #endif
 
 /**
- * Get the project root directory at runtime.
+ * @brief Get the project root directory at runtime.
  * The executable lives in build/, so project root is one level up.
  * Works on macOS, Linux, and Windows without any hardcoded paths.
+ * @author
  */
 static std::string getProjectRoot() {
   std::string exePath;
@@ -65,15 +85,27 @@ static std::string getProjectRoot() {
 static const char base64_chars[] =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
+/**
+ * @brief Encodes binary data into Base64 format.
+ * This function converts raw binary data (such as JPEG image bytes)
+ * into a Base64-encoded string so it can be transmitted safely over
+ * text-based pipes between C++ and Python.
+ *
+ * @param buf Pointer to input byte buffer.
+ * @param buflen Length of the buffer.
+ * @return Base64-encoded string representation.
+ * @author
+ */
 std::string base64_encode(const unsigned char *buf, unsigned int buflen) {
   std::string ret;
   int i = 0;
   unsigned char char_array_3[3];
   unsigned char char_array_4[4];
 
-  while (buflen--) {
+   while (buflen--) {
     char_array_3[i++] = *(buf++);
     if (i == 3) {
+      // Convert 3 bytes into 4 Base64 indices
       char_array_4[0] = (char_array_3[0] & 0xfc) >> 2;
       char_array_4[1] =
           ((char_array_3[0] & 0x03) << 4) + ((char_array_3[1] & 0xf0) >> 4);
@@ -81,12 +113,15 @@ std::string base64_encode(const unsigned char *buf, unsigned int buflen) {
           ((char_array_3[1] & 0x0f) << 2) + ((char_array_3[2] & 0xc0) >> 6);
       char_array_4[3] = char_array_3[2] & 0x3f;
 
+      // Append encoded characters
       for (i = 0; i < 4; i++)
         ret += base64_chars[char_array_4[i]];
+
       i = 0;
     }
   }
 
+  // Handle remaining bytes (padding)
   if (i > 0) {
     for (int j = i; j < 3; j++)
       char_array_3[j] = '\0';
@@ -101,18 +136,22 @@ std::string base64_encode(const unsigned char *buf, unsigned int buflen) {
       ret += base64_chars[char_array_4[j]];
 
     while (i++ < 3)
-      ret += '=';
+      ret += '='; // Padding characters
   }
 
   return ret;
 }
+
 
 // Simple JSON parser for hand data
 struct JsonValue {
   std::string type; // "object", "array", "string", "number", "null"
   std::string value;
 };
-
+/**
+ * @brief Destructor that stops the Python subprocess.
+ * @author
+ */
 HandTracker::HandTracker() : initialized_(false), python_process_(nullptr) {
   if (startPythonProcess()) {
     initialized_ = true;
@@ -121,9 +160,19 @@ HandTracker::HandTracker() : initialized_(false), python_process_(nullptr) {
     std::cerr << "Error initializing HandTracker\n";
   }
 }
-
+  /* @brief Destructor that stops the Python subprocess.
+   * @author
+ */
 HandTracker::~HandTracker() { stopPythonProcess(); }
 
+/**
+ * @brief Starts the Python MediaPipe subprocess.
+ * Builds the command dynamically using the project root directory,
+ * launches the Python script, and waits for a "READY" signal before
+ * returning success.
+ * @return true if initialization succeeds, false otherwise.
+ * @author
+ */
 bool HandTracker::startPythonProcess() {
   // Resolve paths relative to the project root (one level above build/)
   std::string root = getProjectRoot();
@@ -142,7 +191,7 @@ bool HandTracker::startPythonProcess() {
   python_process_ = popen(cmd.c_str(), "r+");
 
   if (!python_process_) {
-    std::cerr << "Failed to start Python process\n";
+    std::cerr << "Failed to start Python process\n"; // Debug output from Python
     return false;
   }
 
@@ -165,17 +214,28 @@ bool HandTracker::startPythonProcess() {
 
   return false;
 }
-
+ /**
+ * @brief Stops and cleans up the Python subprocess
+ * @author Hasit
+ */
 void HandTracker::stopPythonProcess() {
   if (python_process_) {
     pclose(python_process_);
     python_process_ = nullptr;
   }
 }
-
+/**
+ * @brief Sends a frame to Python and returns detected hands.
+ * Encodes the frame, sends it to Python, reads JSON output,
+ * and parses hand landmark data.
+ *
+ * @param frame Input OpenCV image.
+ * @return Vector of detected Hand objects.
+ * @author Hasit
+ */
 std::vector<Hand> HandTracker::detectHands(const cv::Mat &frame) {
   std::vector<Hand> hands;
-
+  // Early exit if not initialized
   if (!initialized_ || !python_process_)
     return hands;
 
@@ -235,7 +295,7 @@ std::vector<Hand> HandTracker::detectHands(const cv::Mat &frame) {
 
       if (bracket_depth != 0)
         return hands;
-
+      // Extract the raw contents inside the "hands" array
       std::string hands_content =
           json_str.substr(array_open + 1, array_close - array_open - 1);
 
