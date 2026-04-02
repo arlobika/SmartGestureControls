@@ -66,16 +66,16 @@ int main() {
     }
     std::cerr << "Camera opened succesfully\n";
 
-    // ===== GESTURE RECOGNITION =====
-    // Classify the gesture of the first detected hand and trigger action
-    GestureType currentGesture = GestureType::NONE;
-    if (!hands.empty()) {
-      currentGesture = classifier.classify(hands[0]);
-      std::string action = mapper.handleGesture(currentGesture);
-      if (!action.empty()) {
-        lastAction = action;
-      }
+    // Initialize hand tracker and gesture components
+    HandTracker tracker;
+    if (!tracker.isInitialized()) {
+        std::cerr << "Error: Failed to initialize HandTracker\n";
+        return 1;
     }
+
+    GestureClassifier classifier;
+    ActionMapper mapper;
+    std::string lastAction;
 
     cv::Mat frame;  // Frame buffer for captured images
     int hand_count_prev = 0;  // Unused, kept for future smoothing logic
@@ -85,6 +85,8 @@ int main() {
     double fps = 0.0;
     int frame_counter = 0;
     
+    GestureType currentGesture = GestureType::NONE;
+
     // ===== MAIN LOOP =====
     while (true) {
         // Calculate FPS
@@ -107,11 +109,21 @@ int main() {
 
         // Detect hands in current frame
         // Returns vector of Hand objects, each with 21 landmarks
-          //
         auto hands = tracker.detectHands(frame);
-        //std::vector<Hand> hands;
 
         std::cout << "Prep Visualization\n";
+
+        // ===== GESTURE RECOGNITION =====
+        // Classify the gesture of the first detected hand and trigger action
+        if (!hands.empty()) {
+            currentGesture = classifier.classify(hands[0]);
+            std::string action = mapper.handleGesture(currentGesture);
+            if (!action.empty()) {
+                lastAction = action;
+            }
+        } else {
+            currentGesture = GestureType::NONE;
+        }
 
         // ===== VISUALIZATION =====
         // Draw hand landmarks and skeleton for each detected hand
@@ -198,57 +210,39 @@ int main() {
         cv::putText(frame, "Press ESC to exit", cv::Point(frame.cols - 200, 60),
                    cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(255, 255, 255), 1);
 
+        // ===== GESTURE DISPLAY =====
+        // Show current gesture name
+        if (currentGesture != GestureType::NONE) {
+            std::string gestureText = "Gesture: " + gestureToString(currentGesture);
+            cv::putText(frame, gestureText, cv::Point(10, frame.rows - 80),
+                        cv::FONT_HERSHEY_SIMPLEX, 0.8, cv::Scalar(0, 255, 255), 2);
+        }
+        // Show last triggered action
+        if (!lastAction.empty()) {
+            double cooldown = mapper.getCooldownRemaining();
+            std::string actionText = "Action: " + lastAction;
+            if (cooldown > 0) {
+                actionText += " (" + std::to_string((int)cooldown + 1) + "s)";
+            }
+            cv::putText(frame, actionText, cv::Point(10, frame.rows - 10),
+                        cv::FONT_HERSHEY_SIMPLEX, 0.7, cv::Scalar(255, 200, 0), 2);
+        }
+
         // Display the frame in a window
         cv::imshow("Smart Gesture Controls - Hand Tracking", frame);
         int key = cv::waitKey(1); // 1 ms delay, required for window to update
-        
+
         // Wait 30ms and check for ESC key (ASCII 27)
         // 30ms delay = ~33 FPS maximum, reduces CPU usage
         if (key == 27) break;
     }
 
-    // FPS counter in top right
-    std::string fps_text = "FPS: " + std::to_string(static_cast<int>(fps));
-    cv::putText(frame, fps_text, cv::Point(frame.cols - 120, 30),
-                cv::FONT_HERSHEY_SIMPLEX, 0.7, cv::Scalar(255, 255, 0), 2);
+    // Cleanup: close all OpenCV windows
+    cv::destroyAllWindows();
 
-    // Exit instruction below FPS
-    cv::putText(frame, "Press ESC to exit", cv::Point(frame.cols - 200, 60),
-                cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(255, 255, 255), 1);
+    // HandTracker destructor will automatically:
+    // - Close the Python subprocess pipe
+    // - Terminate the Python process
 
-    // ===== GESTURE DISPLAY =====
-    // Show current gesture name
-    if (currentGesture != GestureType::NONE) {
-      std::string gestureText = "Gesture: " + gestureToString(currentGesture);
-      cv::putText(frame, gestureText, cv::Point(10, frame.rows - 80),
-                  cv::FONT_HERSHEY_SIMPLEX, 0.8, cv::Scalar(0, 255, 255), 2);
-    }
-    // Show last triggered action
-    if (!lastAction.empty()) {
-      double cooldown = mapper.getCooldownRemaining();
-      std::string actionText = "Action: " + lastAction;
-      if (cooldown > 0) {
-        actionText += " (" + std::to_string((int)cooldown + 1) + "s)";
-      }
-      cv::putText(frame, actionText, cv::Point(10, frame.rows - 10),
-                  cv::FONT_HERSHEY_SIMPLEX, 0.7, cv::Scalar(255, 200, 0), 2);
-    }
-
-    // Display the frame in a window
-    cv::imshow("Smart Gesture Controls - Hand Tracking", frame);
-
-    // Wait 30ms and check for ESC key (ASCII 27)
-    // 30ms delay = ~33 FPS maximum, reduces CPU usage
-    if (cv::waitKey(30) == 27)
-      break;
-  }
-
-  // Cleanup: close all OpenCV windows
-  cv::destroyAllWindows();
-
-  // HandTracker destructor will automatically:
-  // - Close the Python subprocess pipe
-  // - Terminate the Python process
-
-  return 0;
+    return 0;
 }
