@@ -12,7 +12,7 @@
  *   THUMBS_UP  → Up Arrow   → Volume Up
  *   THUMBS_DOWN→ Down Arrow → Volume Down
  *   PEACE      → L          → Skip Forward 10s
- * @authors Hasit Dhanoa
+ * @authors Arlo, Sneh, Dhivya
  */
 
 #include "ActionMapper.hpp"
@@ -32,7 +32,7 @@
 * trigger an action immediately.
 * @param cooldownSeconds The minimum number of seconds that must pass before
 * another gesture can trigger a new action.
-* @authors Hasit
+* @authors Arlo
 */
 ActionMapper::ActionMapper(double cooldownSeconds)
     : cooldownSeconds_(cooldownSeconds), lastGesture_(GestureType::NONE),
@@ -49,7 +49,7 @@ ActionMapper::ActionMapper(double cooldownSeconds)
  * - On Windows, the function uses the `SendInput` API with separate key-down
  *   and key-up events.
  * @param keyCode (The platform specific key code to simulate
- * @authors Hasit Dhanoa
+ * @authors Dhivya
 */
 void ActionMapper::simulateKeypress(int keyCode) {
 #ifdef __APPLE__
@@ -94,7 +94,7 @@ void ActionMapper::simulateKeypress(int keyCode) {
  * @return The number of seconds remaining in the cooldown period. Returns
  * `0.0` if the cooldown has expired.
  *
- * @author
+ * @author Sneh
 */
 double ActionMapper::getCooldownRemaining() const {
   auto now = std::chrono::steady_clock::now();
@@ -125,7 +125,7 @@ double ActionMapper::getCooldownRemaining() const {
  * if no action was taken because the gesture was `NONE`, unrecognized, or
  * still within the cooldown period.
  *
- * @author Hasit Dhanoa
+ * @author Dhivya
  */
 
   std::string ActionMapper::handleGesture(GestureType gesture) {
