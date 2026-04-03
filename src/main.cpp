@@ -64,6 +64,7 @@ int main() {
     int frame_counter = 0;
     
     GestureType currentGesture = GestureType::NONE;
+    bool gestureEnabled = true;  // Toggle with 'g' key
 
     // ===== MAIN LOOP =====
     while (true) {
@@ -93,11 +94,15 @@ int main() {
 
         // ===== GESTURE RECOGNITION =====
         // Classify the gesture of the first detected hand and trigger action
-        if (!hands.empty()) {
-            currentGesture = classifier.classify(hands[0]);
-            std::string action = mapper.handleGesture(currentGesture);
-            if (!action.empty()) {
-                lastAction = action;
+        if (gestureEnabled) {
+            if (!hands.empty()) {
+                currentGesture = classifier.classify(hands[0]);
+                std::string action = mapper.handleGesture(currentGesture);
+                if (!action.empty()) {
+                    lastAction = action;
+                }
+            } else {
+                currentGesture = GestureType::NONE;
             }
         } else {
             currentGesture = GestureType::NONE;
@@ -188,6 +193,14 @@ int main() {
         cv::putText(frame, "Press ESC to exit", cv::Point(frame.cols - 200, 60),
                    cv::FONT_HERSHEY_SIMPLEX, 0.6, cv::Scalar(255, 255, 255), 1);
 
+        // Gesture control status
+        std::string gestureStatus = gestureEnabled ? "Gestures: ON" : "Gestures: OFF";
+        cv::Scalar statusColor = gestureEnabled ? cv::Scalar(0, 255, 0) : cv::Scalar(0, 0, 255);
+        cv::putText(frame, gestureStatus, cv::Point(frame.cols - 200, 90),
+                   cv::FONT_HERSHEY_SIMPLEX, 0.6, statusColor, 2);
+        cv::putText(frame, "Press 'G' to toggle gestures", cv::Point(frame.cols - 300, 120),
+                   cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(200, 200, 200), 1);
+
         // ===== GESTURE DISPLAY =====
         // Show current gesture name
         if (currentGesture != GestureType::NONE) {
@@ -210,9 +223,12 @@ int main() {
         cv::imshow("Smart Gesture Controls - Hand Tracking", frame);
         int key = cv::waitKey(1); // 1 ms delay, required for window to update
 
-        // Wait 30ms and check for ESC key (ASCII 27)
-        // 30ms delay = ~33 FPS maximum, reduces CPU usage
-        if (key == 27) break;
+        if (key == 27) break;  // ESC to exit
+        if (key == 'g' || key == 'G') {  // Toggle gesture control
+            gestureEnabled = !gestureEnabled;
+            lastAction = "";  // Clear stale action text
+            std::cout << "Gesture control: " << (gestureEnabled ? "ON" : "OFF") << "\n";
+        }
     }
 
     // Cleanup: close all OpenCV windows
