@@ -13,7 +13,7 @@
  * 3. Python returns JSON with hand landmarks
  * 4. Main loop draws landmarks and skeleton on frame
  * 5. OpenCV displays the result
- * @author Jaime, Hasit, Arlo
+ * @author Jaime, Hasit, Selahattin
  */
 
 #include "ActionMapper.hpp"
@@ -44,7 +44,7 @@
  * @return Returns 0 if the program completes successfully, or 1 if an
  * initialization error occurs.
  *
- * @author Jaime, Hasit, Arlo
+ * @author Jaime, Hasit, Selahattin
 */
 
 int main() {

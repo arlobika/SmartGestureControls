@@ -6,7 +6,7 @@
  *
  * Requires macOS Accessibility permissions:
  *   System Settings → Privacy & Security → Accessibility
- * @authors Arlo, Sneh
+ * @authors Selahattin, Sneh
  */
 
 #pragma once
@@ -20,14 +20,14 @@
  * @brief Maps recognized gestures to simulated macOS keyboard events
  * Handles the mapping from GestureType → simulated keypress.
  * Includes a cooldown to prevent repeated triggering from a held gesture.
- * @authors Arlo, Sneh
+ * @authors Selahattin, Sneh
  */
 class ActionMapper {
 public:
   /**
    * @brief Constructs an ActionMapper with a specified cooldown period
    * @param cooldownSeconds Minimum seconds between consecutive actions
-   * @author Arlo
+   * @author Selahattin
    */
   ActionMapper(double cooldownSeconds = 2.0);
 
@@ -45,7 +45,7 @@ public:
   /**
    * @brief Returns the remaining cooldown time before another action can occur.
    * @return Get the current cooldown remaining in seconds
-   * @authors Arlo
+  * @authors Selahattin
    */
   double getCooldownRemaining() const;
 
@@ -62,20 +62,20 @@ private:
    * Uses NX_SYSDEFINED events — required for media keys, which cannot
    * be sent via regular CGEventCreateKeyboardEvent calls.
    * @param keyCode One of the NX_KEYTYPE_* constants (e.g. NX_KEYTYPE_PLAY)
-   * @authors Arlo
+  * @authors Selahattin
    */
   void simulateMediaKey(uint32_t keyCode);
 #endif
   void simulateKeypress(int keyCode);
   /**
   * @brief minimum cooldown time between gesture-ttriggered actions
-  * @authors Arlo
+  * @authors Selahattin
   */
 
   double cooldownSeconds_;
   /**
   * @brief the last gesture that triggered an action
-  * @authors Arlo
+  * @authors Selahattin
   */
   GestureType lastGesture_;
   /**
