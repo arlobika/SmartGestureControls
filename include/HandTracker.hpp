@@ -1,4 +1,16 @@
-﻿#pragma once
+﻿/**
+ * @file HandTracker.hpp
+ * @brief Declares the HandTracker class used to detect hands
+ * using MediaPipe via a Python subprocess.
+ * Manages communication with a Python subprocess that runs MediaPipe hand detection.
+ * Communication Protocol:
+ * - Sends size + base64 data to Python via pipe (stdin)
+ * - Python returns JSON with hand landmarks via pipe (stdout)
+ * - C++ parses JSON to extract hand data
+ * @authors Hasit, Jaime
+ */
+
+#pragma once
 
 #include <opencv2/opencv.hpp>
 #include <string>
@@ -17,43 +29,102 @@
 #  include <sys/types.h> // pid_t
 #endif
 
-// ── Hand ─────────────────────────────────────────────────────────────────────
-// Holds the result for a single detected hand.
+/**
+ * Represents a single detected hand with its landmarks
+ * @struct Hand
+ * @brief Represents a single detected hand with its landmarks
+ * Each detected hand contains a set of 21 landmarks returned by MediaPipe.
+ * @authors Jaime, Hasit
+ */
+
 struct Hand {
     std::string            handedness; // "Left" or "Right"
     float                  confidence; // MediaPipe handedness confidence [0, 1]
     std::vector<cv::Point> landmarks;  // 21 pixel-space landmark positions
 };
 
-// ── HandTracker ───────────────────────────────────────────────────────────────
-// Manages a long-lived Python subprocess (hand_detector.py) and communicates
-// with it over two anonymous pipes — one for writing frames (stdin of the child)
-// and one for reading JSON results (stdout of the child).
-//
-// Usage:
-//   HandTracker tracker;
-//   if (!tracker.isInitialized()) { /* handle error */ }
-//   std::vector<Hand> hands = tracker.detectHands(frame);
+/**
+ * @class HandTracker
+ * @brief Manages a Python subprocess that performs hand detection using MediaPipe.
+ * Handles frame encoding, communication, and JSON parsing.
+ * @authors Hasit
+ */
+
 class HandTracker {
 public:
+    /**
+    * @brief Starts Python subprocess with MediaPipe
+    * - Launches hand_detector.py
+    * - Waits for "READY" signal from Python
+    * - Sets initialized_ flag on success
+    * @authors Hasit
+    */
     HandTracker();
+    /**
+        * @brief Deconstructor that cleansup Python subprocess
+        * Closes pipe to Python process
+        * Terminates subprocess
+        * @authors Hasit
+        */
+
     ~HandTracker();
 
-    // Not copyable or movable — owns OS-level pipe handles / fds.
+    /**
+     * @brief Copy constructor is deleted to prevent copying.
+     * HandTracker manages a Python subprocess and file pipe. Allowing the object
+     * to be copied could result in multiple objects attempting to control or
+     * close the same process, which would lead to undefined behavior.
+     * @author Jaime
+     */
     HandTracker(const HandTracker&) = delete;
+    /**
+     * @brief Copy assignment operator is deleted to prevent assignment.
+     * Disallowing copy assignment ensures that only one HandTracker instance
+     * manages the underlying Python subprocess and communication pipe
+     * @author Jaime
+ */
     HandTracker& operator=(const HandTracker&) = delete;
 
-    // Detect hands in the given BGR frame.
-    // Returns an empty vector when no hands are found or on error.
+    /**
+     * @brief Detect hands in the given frame
+     * This function sends the given frame to the Python MediaPipe detector
+     * and receives detection results in JSON format. The JSON response is
+     * parsed to extract landmark coordinates detected hand.
+     * @param frame OpenCV Mat containing the image to process
+     * @return Vector of Hand objects (0-2 hands typically)
+     * @authors Hasit
+     */
     std::vector<Hand> detectHands(const cv::Mat& frame);
+    /**
+         * @brief Check if HandTracker was initialized successfully
+         * @return true if Python subprocess is running
+         * @authors Hasit
+         */
 
     bool isInitialized() const { return initialized_; }
 
 private:
+    /**
+         * @brief Launches the Python MediaPipe detection subprocess.
+         * This function starts the Python script responsible for performing
+         * hand detection and establishes a bidirectional communication pipe
+         * between the C++ program and the Python process.
+         * @return true if successful, false otherwise
+         * @authors Hasit
+         */
     bool startPythonProcess();
+
+    /**
+     * @brief Stop and cleanup the Python subprocess
+     * This function closes the communication pipe and terminates the
+     * Python detection process to ensure that system resources are
+     * properly released.
+     * @authors Hasit
+     */
     void stopPythonProcess();
 
-    bool initialized_;
+
+    bool initialized_;  // Flag indicating successful initialization
 
     // Two separate FILE* streams replace the old single popen FILE*.
     // python_write_ → child stdin  (we send base64-encoded JPEG frames)
