@@ -1,3 +1,0 @@
-/Users/selo/group31/build/CMakeFiles/app.dir
-/Users/selo/group31/build/CMakeFiles/edit_cache.dir
-/Users/selo/group31/build/CMakeFiles/rebuild_cache.dir
