@@ -55,11 +55,23 @@ private:
    * @param keyCode The macOS virtual key code to simulate
    * @authors Sneh
    */
+
+#ifdef __APPLE__
+  /**
+   * @brief Simulate a macOS media key press (play/pause, next, prev, etc.)
+   * Uses NX_SYSDEFINED events — required for media keys, which cannot
+   * be sent via regular CGEventCreateKeyboardEvent calls.
+   * @param keyCode One of the NX_KEYTYPE_* constants (e.g. NX_KEYTYPE_PLAY)
+   * @authors Arlo
+   */
+  void simulateMediaKey(uint32_t keyCode);
+#endif
   void simulateKeypress(int keyCode);
   /**
   * @brief minimum cooldown time between gesture-ttriggered actions
   * @authors Arlo
   */
+
   double cooldownSeconds_;
   /**
   * @brief the last gesture that triggered an action

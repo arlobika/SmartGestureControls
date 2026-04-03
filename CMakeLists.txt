@@ -17,7 +17,7 @@ target_include_directories(app PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # Platform-specific linking
 if(APPLE)
-    target_link_libraries(app PRIVATE ${OpenCV_LIBS} "-framework ApplicationServices")
+    target_link_libraries(app PRIVATE ${OpenCV_LIBS} "-framework ApplicationServices" "-framework IOKit")
 elseif(WIN32)
     target_link_libraries(app PRIVATE ${OpenCV_LIBS})
 else()
