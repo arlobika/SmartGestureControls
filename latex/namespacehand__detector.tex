@@ -1,0 +1,64 @@
+\doxysection{hand\+\_\+detector Namespace Reference}
+\hypertarget{namespacehand__detector}{}\label{namespacehand__detector}\index{hand\_detector@{hand\_detector}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{classhand__detector_1_1_hand_detector}{Hand\+Detector}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespacehand__detector_a00d4798078634f83f08732b53ed9347a}\label{namespacehand__detector_a00d4798078634f83f08732b53ed9347a} 
+{\bfseries file}
+\item 
+\Hypertarget{namespacehand__detector_a5e8b3ac1968fe57557ff5c6b91a14b03}\label{namespacehand__detector_a5e8b3ac1968fe57557ff5c6b91a14b03} 
+{\bfseries detector} = \doxymbox{\hyperlink{classhand__detector_1_1_hand_detector}{Hand\+Detector}}()
+\item 
+\Hypertarget{namespacehand__detector_a18be39182fe66f5483cf77bee82429da}\label{namespacehand__detector_a18be39182fe66f5483cf77bee82429da} 
+{\bfseries flush}
+\item 
+\Hypertarget{namespacehand__detector_a50099d21be8041dd5fecbd637b424de4}\label{namespacehand__detector_a50099d21be8041dd5fecbd637b424de4} 
+int {\bfseries frame\+\_\+count} = 0
+\item 
+\Hypertarget{namespacehand__detector_a260057ba946ef4d0510ad617764af28c}\label{namespacehand__detector_a260057ba946ef4d0510ad617764af28c} 
+{\bfseries size\+\_\+line} = sys.\+stdin.\+readline()
+\item 
+\Hypertarget{namespacehand__detector_ab6409caa0395ca8001eed7494f505e13}\label{namespacehand__detector_ab6409caa0395ca8001eed7494f505e13} 
+{\bfseries image\+\_\+size} = int(size\+\_\+line.\+strip())
+\item 
+\Hypertarget{namespacehand__detector_a926e3e879d10fe7def1203da87d1d6e0}\label{namespacehand__detector_a926e3e879d10fe7def1203da87d1d6e0} 
+{\bfseries image\+\_\+b64\+\_\+data} = sys.\+stdin.\+readline().strip()
+\item 
+\Hypertarget{namespacehand__detector_adcf05ae2bdad5a708e7419c3aa0c1c6b}\label{namespacehand__detector_adcf05ae2bdad5a708e7419c3aa0c1c6b} 
+{\bfseries image\+\_\+data} = base64.\+b64decode(image\+\_\+b64\+\_\+data)
+\item 
+\Hypertarget{namespacehand__detector_a53628f0c4f470ec63e68cfda7e0eba54}\label{namespacehand__detector_a53628f0c4f470ec63e68cfda7e0eba54} 
+{\bfseries result} = detector.\+detect(image\+\_\+data)
+\item 
+\Hypertarget{namespacehand__detector_a7b796c4d4d59f08e0035ccdba5476c85}\label{namespacehand__detector_a7b796c4d4d59f08e0035ccdba5476c85} 
+{\bfseries json\+\_\+str} = json.\+dumps(result)
+\item 
+\Hypertarget{namespacehand__detector_a930446cb760e03c8824041b02be0d157}\label{namespacehand__detector_a930446cb760e03c8824041b02be0d157} 
+{\bfseries stderr}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Hand Detection Server using MediaPipe
+
+This script runs as a subprocess, communicating with the C++ application via stdin/stdout.
+It receives base64-encoded images, runs MediaPipe hand landmark detection,
+and returns JSON with hand data.
+
+Communication Protocol:
+1. Read image size from stdin (text line)
+2. Read base64-encoded JPEG data from stdin
+3. Decode base64 → JPEG bytes → numpy array
+4. Run MediaPipe hand detection
+5. Convert normalized coordinates (0-1) to pixel coordinates
+6. Return JSON via stdout
+
+Author: Smart Gesture Controls Team
+Date: February 2026
+\end{DoxyVerb}
+ 

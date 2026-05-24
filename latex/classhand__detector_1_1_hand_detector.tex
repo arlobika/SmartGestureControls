@@ -1,0 +1,89 @@
+\doxysection{hand\+\_\+detector.\+Hand\+Detector Class Reference}
+\hypertarget{classhand__detector_1_1_hand_detector}{}\label{classhand__detector_1_1_hand_detector}\index{hand\_detector.HandDetector@{hand\_detector.HandDetector}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classhand__detector_1_1_hand_detector_a4dc9f95b676dfae1c2d41331fb6f0c65}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\doxymbox{\hyperlink{classhand__detector_1_1_hand_detector_aae433125511577577a2c37b9eed8bf7e}{detect}} (self, image\+\_\+data)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classhand__detector_1_1_hand_detector_a895708593137559481ef07ae9e06a159}\label{classhand__detector_1_1_hand_detector_a895708593137559481ef07ae9e06a159} 
+{\bfseries detector} = vision.\+Hand\+Landmarker.\+create\+\_\+from\+\_\+options(options)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}MediaPipe Hand Landmarker wrapper
+
+Detects hands in images and returns 21 landmarks per hand.
+
+Landmark Indices:
+    0: Wrist
+    1-4: Thumb (base to tip)
+    5-8: Index finger
+    9-12: Middle finger
+    13-16: Ring finger
+    17-20: Pinky
+\end{DoxyVerb}
+ 
+
+\label{doc-constructors}
+\Hypertarget{classhand__detector_1_1_hand_detector_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classhand__detector_1_1_hand_detector_a4dc9f95b676dfae1c2d41331fb6f0c65}\index{hand\_detector.HandDetector@{hand\_detector.HandDetector}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!hand\_detector.HandDetector@{hand\_detector.HandDetector}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classhand__detector_1_1_hand_detector_a4dc9f95b676dfae1c2d41331fb6f0c65} 
+hand\+\_\+detector.\+Hand\+Detector.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize MediaPipe Hand Landmarker
+
+Loads the hand_landmarker.task model file and creates a detector instance.
+Raises exception if model file not found or initialization fails.
+\end{DoxyVerb}
+ 
+
+\label{doc-func-members}
+\Hypertarget{classhand__detector_1_1_hand_detector_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classhand__detector_1_1_hand_detector_aae433125511577577a2c37b9eed8bf7e}\index{hand\_detector.HandDetector@{hand\_detector.HandDetector}!detect@{detect}}
+\index{detect@{detect}!hand\_detector.HandDetector@{hand\_detector.HandDetector}}
+\doxysubsubsection{\texorpdfstring{detect()}{detect()}}
+{\footnotesize\ttfamily \label{classhand__detector_1_1_hand_detector_aae433125511577577a2c37b9eed8bf7e} 
+hand\+\_\+detector.\+Hand\+Detector.\+detect (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{image\+\_\+data}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Detect hands in an image
+
+Args:
+    image_data (bytes): JPEG-encoded image data
+    
+Returns:
+    dict: JSON-serializable dictionary with format:
+        {
+            "hands": [
+                {
+                    "handedness": "Left" or "Right",
+                    "confidence": 0.0 - 1.0,
+                    "landmarks": [
+                        {"x": int, "y": int, "z": float},
+                        ... (21 total landmarks)
+                    ]
+                },
+                ... (0-2 hands)
+            ]
+        }
+        
+        Or on error:
+        {
+            "error": "error message",
+            "hands": []
+        }
+\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+hand\+\_\+detector.\+py\end{DoxyCompactItemize}

@@ -1,0 +1,92 @@
+\chapter{Smart Gesture Controls }
+\hypertarget{md__r_e_a_d_m_e_8old}{}\label{md__r_e_a_d_m_e_8old}\index{Smart Gesture Controls@{Smart Gesture Controls}}
+\label{md__r_e_a_d_m_e_8old_autotoc_md85}%
+\Hypertarget{md__r_e_a_d_m_e_8old_autotoc_md85}%
+\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md86}{}\doxysection{\texorpdfstring{Overview}{Overview}}\label{md__r_e_a_d_m_e_8old_autotoc_md86}
+Smart Gesture Controls is a camera-\/based system that allows users to control media playback using real-\/time hand gestures. The system uses a standard webcam and computer vision techniques to detect hand gestures and map them to media control actions such as play/\+pause, volume adjustment, and skipping tracks.
+
+The core focus of the project is the software pipeline, implemented in C++, using Open\+CV for real-\/time video capture and Media\+Pipe for hand landmark detection and gesture recognition.
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md88}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md__r_e_a_d_m_e_8old_autotoc_md88}
+
+\begin{DoxyItemize}
+\item Hotkey to enable or disable gesture control
+\item Real-\/time webcam video capture
+\item Hand gesture recognition and tracking
+\item Gesture-\/to-\/action mapping (media controls, navigation)
+\item Cross-\/platform support (Windows and mac\+OS)
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md89}{}\doxysubsection{\texorpdfstring{Example Gestures}{Example Gestures}}\label{md__r_e_a_d_m_e_8old_autotoc_md89}
+
+\begin{DoxyItemize}
+\item High five → Play /\+ Pause
+\item Swipe left /\+ right → Skip backward /\+ forward
+\item Swipe up /\+ down → Volume control
+\item Point \& pinch → Zoom in /\+ out
+\item Left-\/hand and right-\/hand recognition
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md91}{}\doxysection{\texorpdfstring{Project Structure}{Project Structure}}\label{md__r_e_a_d_m_e_8old_autotoc_md91}
+├── src/\+ \# Source files ├── include/\+ \# Header files ├── assets/\+ \# Assets and demo resources ├── build/\+ \# Build output (ignored by git) ├── CMake\+Lists.\+txt ├── README.\+md └── .gitignore
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md93}{}\doxysection{\texorpdfstring{Requirements}{Requirements}}\label{md__r_e_a_d_m_e_8old_autotoc_md93}
+
+\begin{DoxyItemize}
+\item C++17 or newer
+\item CMake (\texorpdfstring{$>$}{>}= 3.\+16)
+\item Open\+CV
+\item Webcam
+\item Media\+Pipe (integration in progress)
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md95}{}\doxysection{\texorpdfstring{Build Instructions}{Build Instructions}}\label{md__r_e_a_d_m_e_8old_autotoc_md95}
+\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md96}{}\doxysubsection{\texorpdfstring{mac\+OS}{mac\+OS}}\label{md__r_e_a_d_m_e_8old_autotoc_md96}
+brew install cmake ninja opencv\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md97}{}\doxysubsection{\texorpdfstring{Windows}{Windows}}\label{md__r_e_a_d_m_e_8old_autotoc_md97}
+
+\begin{DoxyItemize}
+\item Install Visual Studio Build Tools (C++)
+\item Install CMake
+\item Install Open\+CV and configure environment variables
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md99}{}\doxysection{\texorpdfstring{Build \& Run}{Build \& Run}}\label{md__r_e_a_d_m_e_8old_autotoc_md99}
+cmake -\/S . -\/B build -\/G Ninja cmake --build build ./\+build/\+app
+
+Press ESC to exit the application.
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md101}{}\doxysection{\texorpdfstring{Development Workflow}{Development Workflow}}\label{md__r_e_a_d_m_e_8old_autotoc_md101}
+
+\begin{DoxyItemize}
+\item All development is done on feature branches
+\item Merge Requests are used to merge into main
+\item Version control is handled using Git and Git\+Lab
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md103}{}\doxysection{\texorpdfstring{Current Status}{Current Status}}\label{md__r_e_a_d_m_e_8old_autotoc_md103}
+
+\begin{DoxyItemize}
+\item[\DoxyChecked] Repository setup
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyChecked] Open\+CV webcam capture
+\item[\DoxyUnchecked] Media\+Pipe hand tracking
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Gesture classification
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] OS-\/level media control
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] UI feedback and optimization
+\end{DoxyItemize}
+
+\DoxyHorRuler{0}
+\hypertarget{md__r_e_a_d_m_e_8old_autotoc_md105}{}\doxysection{\texorpdfstring{Notes}{Notes}}\label{md__r_e_a_d_m_e_8old_autotoc_md105}
+This project is developed as part of a group software engineering assignment. Focus is placed on modularity, real-\/time performance, and robustness against lighting and positioning variations. 

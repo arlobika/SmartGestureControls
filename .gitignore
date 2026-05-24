@@ -1,13 +1,14 @@
 # Build directories
 build/
 cmake-build-*/
-
+.venv
 # CMake generated files
 CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
 Makefile
 compile_commands.json
+Group_31_-_Stage_1.pdf
 
 # OS / misc
 .DS_Store

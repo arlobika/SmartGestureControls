@@ -1,0 +1,238 @@
+\chapter{Smart Gesture Controls -\/ Hand Tracking }
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Smart Gesture Controls -\/ Hand Tracking@{Smart Gesture Controls -\/ Hand Tracking}}
+\label{md__r_e_a_d_m_e_autotoc_md63}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md63}%
+
+
+Real-\/time hand tracking using {\bfseries{Media\+Pipe}} and {\bfseries{Open\+CV}} with a hybrid C++/\+\+Python architecture.\hypertarget{md__r_e_a_d_m_e_autotoc_md64}{}\doxysection{\texorpdfstring{Quick Start}{Quick Start}}\label{md__r_e_a_d_m_e_autotoc_md64}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Build\ and\ run}
+\DoxyCodeLine{\#\ Navigate\ to\ the\ project\ root\ directory}
+\DoxyCodeLine{mkdir\ -\/p\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{cmake\ ..\ \&\&\ make}
+\DoxyCodeLine{cd\ ..}
+\DoxyCodeLine{./build/app}
+
+\end{DoxyCode}
+
+
+{\bfseries{Controls:\+}} Press ESC to exit\hypertarget{md__r_e_a_d_m_e_autotoc_md65}{}\doxysection{\texorpdfstring{Features}{Features}}\label{md__r_e_a_d_m_e_autotoc_md65}
+
+\begin{DoxyItemize}
+\item ✅ Real-\/time hand detection (up to 2 hands)
+\item ✅ 21 landmark points per hand
+\item ✅ Skeleton visualization with finger connections
+\item ✅ Left/\+\+Right hand classification
+\item ✅ Confidence scores
+\item ✅ \texorpdfstring{$\sim$}{\string~}33 FPS performance
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md66}{}\doxysection{\texorpdfstring{Architecture}{Architecture}}\label{md__r_e_a_d_m_e_autotoc_md66}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{C++\ (OpenCV)\ ←→\ Python\ Subprocess\ (MediaPipe)}
+\DoxyCodeLine{\ \ \ \ main.cpp\ \ \ \ \ \ \ \ hand\_detector.py}
+\DoxyCodeLine{\ \ \ \ \ \ \ ↓\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ↓}
+\DoxyCodeLine{\ \ HandTracker\ \ →→→\ \ Hand\ Detection}
+\DoxyCodeLine{\ \ \ \ \ \ \ ↓\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ↓}
+\DoxyCodeLine{\ \ JSON\ Parse\ \ ←←←\ \ JSON\ Response}
+\DoxyCodeLine{\ \ \ \ \ \ \ ↓}
+\DoxyCodeLine{\ \ Rendering}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md67}{}\doxysection{\texorpdfstring{Project Structure}{Project Structure}}\label{md__r_e_a_d_m_e_autotoc_md67}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{group31/}
+\DoxyCodeLine{├──\ CMakeLists.txt\ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Build\ config}
+\DoxyCodeLine{├──\ README.md\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ This\ file}
+\DoxyCodeLine{├──\ DOCUMENTATION.md\ \ \ \ \ \ \ \ \ \ \ \ \#\ Full\ documentation}
+\DoxyCodeLine{├──\ hand\_detector.py\ \ \ \ \ \ \ \ \ \ \ \ \#\ Python\ ML\ inference}
+\DoxyCodeLine{├──\ include/}
+\DoxyCodeLine{│\ \ \ ├──\ HandTracker.hpp\ \ \ \ \ \ \ \ \ \#\ Hand\ detection\ interface}
+\DoxyCodeLine{│\ \ \ ├──\ GestureClassifier.hpp\ \ \ \#\ Gesture\ recognition\ (future)}
+\DoxyCodeLine{│\ \ \ └──\ ActionMapper.hpp\ \ \ \ \ \ \ \ \#\ Action\ mapping\ (future)}
+\DoxyCodeLine{├──\ src/}
+\DoxyCodeLine{│\ \ \ ├──\ main.cpp\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Main\ application\ loop}
+\DoxyCodeLine{│\ \ \ ├──\ HandTracker.cpp\ \ \ \ \ \ \ \ \#\ HandTracker\ implementation}
+\DoxyCodeLine{│\ \ \ ├──\ GestureClassifier.cpp\ \ \#\ Gesture\ logic\ (future)}
+\DoxyCodeLine{│\ \ \ └──\ ActionMapper.cpp\ \ \ \ \ \ \ \#\ Action\ mapping\ (future)}
+\DoxyCodeLine{├──\ models/}
+\DoxyCodeLine{│\ \ \ └──\ hand\_landmarker.task\ \ \ \#\ MediaPipe\ model}
+\DoxyCodeLine{└──\ build/}
+\DoxyCodeLine{\ \ \ \ └──\ app\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#\ Executable}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md68}{}\doxysection{\texorpdfstring{Hand Landmarks}{Hand Landmarks}}\label{md__r_e_a_d_m_e_autotoc_md68}
+Media\+Pipe detects 21 landmarks per hand:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ 8\ \ \ 12\ \ 16\ \ 20\ \ (fingertips)}
+\DoxyCodeLine{\ \ \ \ |\ \ \ |\ \ \ |\ \ \ |}
+\DoxyCodeLine{\ \ \ \ 7\ \ \ 11\ \ 15\ \ 19}
+\DoxyCodeLine{\ \ \ \ |\ \ \ |\ \ \ |\ \ \ |}
+\DoxyCodeLine{\ \ \ \ 6\ \ \ 10\ \ 14\ \ 18}
+\DoxyCodeLine{\ \ \ \ |\ \ \ |\ \ \ |\ \ \ |}
+\DoxyCodeLine{4\ \ \ 5\ \ \ 9\ \ \ 13\ \ 17}
+\DoxyCodeLine{|\ \ \ └───┴────┴───┘}
+\DoxyCodeLine{3\ \ \ \ \ \ \ (palm)}
+\DoxyCodeLine{|}
+\DoxyCodeLine{2\ \ \ \ \ \ \ 0\ =\ wrist}
+\DoxyCodeLine{|\ \ \ \ \ \ /}
+\DoxyCodeLine{1\ \ \ \ \ /}
+\DoxyCodeLine{|\ \ \ \ /}
+\DoxyCodeLine{0───┘}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md69}{}\doxysection{\texorpdfstring{Customization}{Customization}}\label{md__r_e_a_d_m_e_autotoc_md69}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md70}{}\doxysubsection{\texorpdfstring{Change Number of Hands}{Change Number of Hands}}\label{md__r_e_a_d_m_e_autotoc_md70}
+Edit \href{hand_detector.py}{\texttt{hand\+\_\+detector.\+py}}:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{options\ =\ vision.HandLandmarkerOptions(}
+\DoxyCodeLine{\ \ \ \ base\_options=base\_options,}
+\DoxyCodeLine{\ \ \ \ num\_hands=4\ \ \textcolor{comment}{\#\ Change\ from\ 2\ to\ 4}}
+\DoxyCodeLine{)}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md71}{}\doxysubsection{\texorpdfstring{Adjust Colors}{Adjust Colors}}\label{md__r_e_a_d_m_e_autotoc_md71}
+Edit \href{src/main.cpp}{\texttt{src/\+main.\+cpp}}:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cv::Scalar\ landmark\_color(0,\ 255,\ 0);\ \ \textcolor{comment}{//\ Green\ (BGR)}}
+\DoxyCodeLine{cv::Scalar\ skeleton\_color(255,\ 0,\ 0);\ \ \textcolor{comment}{//\ Blue}}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md72}{}\doxysubsection{\texorpdfstring{Change Frame Rate}{Change Frame Rate}}\label{md__r_e_a_d_m_e_autotoc_md72}
+Edit \href{src/main.cpp}{\texttt{src/\+main.\+cpp}}:\+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cv::waitKey(30)\ \ \textcolor{comment}{//\ Change\ 30ms\ to\ your\ preferred\ delay}}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md73}{}\doxysection{\texorpdfstring{Performance Tips}{Performance Tips}}\label{md__r_e_a_d_m_e_autotoc_md73}
+
+\begin{DoxyEnumerate}
+\item {\bfseries{Reduce resolution:\+}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cap.set(cv::CAP\_PROP\_FRAME\_WIDTH,\ 640);}
+\DoxyCodeLine{cap.set(cv::CAP\_PROP\_FRAME\_HEIGHT,\ 480);}
+
+\end{DoxyCode}
+
+\item {\bfseries{Skip frames:\+}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (frame\_count++\ \%\ 2\ ==\ 0)\ \{}
+\DoxyCodeLine{\ \ \ \ hands\ =\ tracker.detectHands(frame);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+\item {\bfseries{Increase confidence threshold:\+}} 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{min\_detection\_confidence=0.7\ \ \textcolor{comment}{\#\ Higher\ =\ fewer\ false\ positives}}
+
+\end{DoxyCode}
+
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md74}{}\doxysection{\texorpdfstring{Documentation}{Documentation}}\label{md__r_e_a_d_m_e_autotoc_md74}
+See \doxysectlink{md__d_o_c_u_m_e_n_t_a_t_i_o_n}{DOCUMENTATION.md}{0} for:\+
+\begin{DoxyItemize}
+\item Detailed architecture explanation
+\item Communication protocol details
+\item JSON parsing implementation
+\item Gesture recognition guide
+\item Troubleshooting tips
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md75}{}\doxysection{\texorpdfstring{Dependencies}{Dependencies}}\label{md__r_e_a_d_m_e_autotoc_md75}
+
+\begin{DoxyItemize}
+\item {\bfseries{C++17}} or later
+\item {\bfseries{CMake}} 3.\+16+
+\item {\bfseries{Open\+CV}} 4.\+x
+\item {\bfseries{Python}} 3.\+9+
+\item {\bfseries{Media\+Pipe}} 0.\+10+
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md76}{}\doxysection{\texorpdfstring{Building from Scratch}{Building from Scratch}}\label{md__r_e_a_d_m_e_autotoc_md76}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md77}{}\doxysubsection{\texorpdfstring{mac\+OS}{mac\+OS}}\label{md__r_e_a_d_m_e_autotoc_md77}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Install\ dependencies}
+\DoxyCodeLine{brew\ install\ cmake\ opencv}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Set\ up\ Python\ environment}
+\DoxyCodeLine{python3\ -\/m\ venv\ .venv}
+\DoxyCodeLine{source\ .venv/bin/activate}
+\DoxyCodeLine{pip\ install\ mediapipe\ opencv-\/python}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Build\ C++\ application}
+\DoxyCodeLine{mkdir\ -\/p\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{cmake\ ..}
+\DoxyCodeLine{make}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Run}
+\DoxyCodeLine{cd\ ..}
+\DoxyCodeLine{./build/app}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md78}{}\doxysubsection{\texorpdfstring{Windows}{Windows}}\label{md__r_e_a_d_m_e_autotoc_md78}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\#\ Install\ dependencies\ (using\ vcpkg)}
+\DoxyCodeLine{vcpkg\ install\ opencv}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Set\ up\ Python\ environment}
+\DoxyCodeLine{python\ -\/m\ venv\ .venv}
+\DoxyCodeLine{.venv\(\backslash\)Scripts\(\backslash\)activate}
+\DoxyCodeLine{pip\ install\ mediapipe\ opencv-\/python}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Build\ C++\ application}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{cmake\ ..}
+\DoxyCodeLine{cmake\ -\/-\/build\ .}
+\DoxyCodeLine{}
+\DoxyCodeLine{\#\ Run}
+\DoxyCodeLine{cd\ ..}
+\DoxyCodeLine{build\(\backslash\)Debug\(\backslash\)app.exe}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md79}{}\doxysection{\texorpdfstring{Troubleshooting}{Troubleshooting}}\label{md__r_e_a_d_m_e_autotoc_md79}
+
+\begin{DoxyTable}{2}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Issue  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Solution  \\
+"{}\+Could not open webcam"{}  &Check camera permissions in System Preferences  \\
+"{}\+Failed to initialize Hand\+Tracker"{}  &Verify model file exists:\+ {\ttfamily models/\+hand\+\_\+landmarker.\+task}  \\
+No landmarks showing  &Check debug output in terminal  \\
+Application lags  &Reduce resolution or skip frames (see Performance Tips)  \\
+Python process error  &Activate venv:\+ {\ttfamily source .venv/\+bin/\+activate}  \\
+\end{DoxyTable}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md80}{}\doxysection{\texorpdfstring{Future Enhancements}{Future Enhancements}}\label{md__r_e_a_d_m_e_autotoc_md80}
+
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Gesture recognition (fist, peace sign, thumbs up)
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Action mapping (volume control, mouse control)
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Multi-\/threading for better performance
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Recording and playback
+\end{DoxyItemize}
+\begin{DoxyItemize}
+\item[\DoxyUnchecked] Custom gestures training
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md81}{}\doxysection{\texorpdfstring{License}{License}}\label{md__r_e_a_d_m_e_autotoc_md81}
+Educational purposes. Media\+Pipe is Apache 2.\+0 licensed.\hypertarget{md__r_e_a_d_m_e_autotoc_md82}{}\doxysection{\texorpdfstring{Original Project Goals}{Original Project Goals}}\label{md__r_e_a_d_m_e_autotoc_md82}
+This project was initially conceived as a media control system. See \doxysectlink{md__r_e_a_d_m_e_8old}{README.old.md}{0} for the original project vision including:\+
+\begin{DoxyItemize}
+\item Hotkey-\/enabled gesture control
+\item Media playback controls (play/\+pause, volume, skip)
+\item Cross-\/platform support
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md83}{}\doxysection{\texorpdfstring{Author}{Author}}\label{md__r_e_a_d_m_e_autotoc_md83}
+Smart Gesture Controls Team -\/ Group 31
+
+\DoxyHorRuler{0}
+
+
+{\bfseries{Need help?}} Check \doxysectlink{md__d_o_c_u_m_e_n_t_a_t_i_o_n}{DOCUMENTATION.md}{0} for comprehensive guides and implementation details.
+
+Running:\+
+\begin{DoxyItemize}
+\item mkdir -\/p build \&\& cd build \&\& cmake .. \&\& make \&\& cd ..
+\item ./\+build/\+app 
+\end{DoxyItemize}
