@@ -20,7 +20,7 @@
  *
  * These rules allow recognition of gestures such as open hand, fist,
  * peace sign, thumbs up, and thumbs down.
- * @authors Hasit, Dhivya, Selahattin
+ * @authors Hasit, Dhivya, Arlo
  */
 
 #include "GestureClassifier.hpp"
@@ -84,7 +84,7 @@ bool GestureClassifier::isFingerExtended(const Hand &hand, int tipIdx,
  *
  * @param hand The detected hand containing landmark data.
  * @return true if the thumb is extended, false otherwise.
- * @author Selahattin
+ * @author Arlo
  */
 bool GestureClassifier::isThumbExtended(const Hand &hand) const {
   // Thumb extends sideways, so compare X distances from wrist
@@ -112,7 +112,7 @@ bool GestureClassifier::isThumbExtended(const Hand &hand) const {
  * @param hand A Hand object containing the 21 MediaPipe landmark points.
  * @return The classified GestureType corresponding to the detected gesture.
  *
- * @author Selahattin
+ * @author Arlo
  */
 GestureType GestureClassifier::classify(const Hand &hand) const {
   // Need all 21 landmarks

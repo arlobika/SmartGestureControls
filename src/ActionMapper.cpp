@@ -12,7 +12,7 @@
  *   THUMBS_UP  → Volume Up  → Volume Up
  *   THUMBS_DOWN→ Volume Down → Volume Down
  *   PEACE      → Fast Forward→ Skip/seek forward
- * @authors Selahattin, Sneh, Dhivya
+ * @authors Arlo, Sneh, Dhivya
  */
 
 #include "ActionMapper.hpp"
@@ -37,7 +37,7 @@
 * trigger an action immediately.
 * @param cooldownSeconds The minimum number of seconds that must pass before
 * another gesture can trigger a new action.
-* @authors Selahattin
+* @authors Arlo
 */
 ActionMapper::ActionMapper(double cooldownSeconds)
     : cooldownSeconds_(cooldownSeconds), lastGesture_(GestureType::NONE),
@@ -97,7 +97,7 @@ void ActionMapper::simulateKeypress(int keyCode) {
  * an NX_SYSDEFINED event with subtype 8 and a packed data1 field.
  * @param keyCode One of the NX_KEYTYPE_* constants from ev_keymap.h
  *   e.g. NX_KEYTYPE_PLAY (16), NX_KEYTYPE_NEXT (17), NX_KEYTYPE_PREV (18)
- * @authors Selahattin
+ * @authors Arlo
  */
 void ActionMapper::simulateMediaKey(uint32_t keyCode) {
     io_service_t hidSystem = IOServiceGetMatchingService(
@@ -157,11 +157,11 @@ double ActionMapper::getCooldownRemaining() const {
  * allows it, the function maps the gesture to a platform-specific keyboard
  * event and simulates the associated keypress.
  * Gesture mapping:
- * - `OPEN_HAND` triggers Play/Pause
- * - `FIST` triggers Mute/Unmute
- * - `THUMBS_UP` triggers Volume Up
- * - `THUMBS_DOWN` triggers Volume Down
- * - `PEACE` triggers Skip Forward
+ * - `OPEN_HAND` triggers Space for play/pause
+ * - `FIST` triggers M for mute/unmute
+ * - `THUMBS_UP` triggers Up Arrow for volume increase
+ * - `THUMBS_DOWN` triggers Down Arrow for volume decrease
+ * - `PEACE` triggers L for skipping forward
  *
  * After successfully triggering an action, the function updates the cooldown
  * state and stores the most recently processed gesture.
@@ -189,15 +189,15 @@ double ActionMapper::getCooldownRemaining() const {
     return ""; // Still on cooldown
   }
 
-    // Map gesture to keypress
-    // macOS uses media-key events, Windows uses VK_MEDIA_* virtual key codes
+  // Map gesture to keypress
+  // macOS uses CGKeyCode values, Windows uses VK_ virtual key codes
   std::string action;
   switch (gesture) {
   case GestureType::OPEN_HAND:
 #ifdef __APPLE__
     simulateMediaKey(NX_KEYTYPE_PLAY);  // macOS: global Play/Pause media key
 #elif _WIN32
-    simulateKeypress(VK_MEDIA_PLAY_PAUSE);  // Windows: Play/Pause
+    simulateKeypress(VK_SPACE);  // Windows: Space
 #endif
     action = "Play/Pause";
     break;
@@ -205,15 +205,15 @@ double ActionMapper::getCooldownRemaining() const {
 #ifdef __APPLE__
     simulateMediaKey(NX_KEYTYPE_MUTE);  // macOS: Mute
 #elif _WIN32
-    simulateKeypress(VK_VOLUME_MUTE);  // Windows: Mute
+    simulateKeypress(0x4D);  // Windows: M
 #endif
-    action = "Mute";
+    action = "Mute (M)";
     break;
   case GestureType::THUMBS_UP:
 #ifdef __APPLE__
     simulateMediaKey(NX_KEYTYPE_SOUND_UP);  // macOS: Volume Up
 #elif _WIN32
-    simulateKeypress(VK_VOLUME_UP);  // Windows: Volume Up
+    simulateKeypress(VK_UP);  // Windows: Up Arrow
 #endif
     action = "Volume Up";
     break;
@@ -221,7 +221,7 @@ double ActionMapper::getCooldownRemaining() const {
 #ifdef __APPLE__
     simulateMediaKey(NX_KEYTYPE_SOUND_DOWN);  // macOS: Volume Down
 #elif _WIN32
-    simulateKeypress(VK_VOLUME_DOWN);  // Windows: Volume Down
+    simulateKeypress(VK_DOWN);  // Windows: Down Arrow
 #endif
     action = "Volume Down";
     break;
@@ -229,7 +229,7 @@ double ActionMapper::getCooldownRemaining() const {
 #ifdef __APPLE__
     simulateMediaKey(NX_KEYTYPE_FAST);  // macOS: Fast Forward / skip forward
 #elif _WIN32
-    simulateKeypress(VK_MEDIA_NEXT_TRACK);  // Windows: Skip/next track
+    simulateKeypress(0x4C);  // Windows: L
 #endif
     action = "Skip Forward";
     break;
